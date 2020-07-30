@@ -96,8 +96,8 @@ public class EntregaUnoTest {
 		
 		question.setCorrectOption(opcionFalse);
 		
-		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionTrue, null);
-		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionFalse, null);
+		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionTrue);
+		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionFalse);
 		ScoreCalculator.calculateAndAssignPoints(resultJugadorUno, resultJugadorDos, question);
 		
 		assertEquals(-1, jugadorUno.getScore().getValue());
@@ -133,8 +133,8 @@ public class EntregaUnoTest {
 		opcionesJugadorDos.add(opcionUno);						
 		opcionesJugadorDos.add(opcionDos);
 		
-		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno, null);
-		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos, null);
+		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno);
+		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos);
 		ScoreCalculator.calculateAndAssignPoints(resultJugadorUno, resultJugadorDos, question);
 		
 		assertEquals(1, jugadorUno.getScore().getValue());
@@ -168,8 +168,8 @@ public class EntregaUnoTest {
 		opcionesJugadorDos.add(opcionUno);						
 		opcionesJugadorDos.add(opcionTres);
 		
-		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno, null);
-		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos, null);
+		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno);
+		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos);
 		ScoreCalculator.calculateAndAssignPoints(resultJugadorUno, resultJugadorDos, question);
 		
 		assertEquals(1, jugadorUno.getScore().getValue());
