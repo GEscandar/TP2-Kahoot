@@ -18,17 +18,32 @@ class OptionGroup{
     + options : List<GameOption>
 }
 
+class Score{
+    + value : int
+    - sumScore(Score score)
+}
+
 class Game{
     + players : List<Player>
 	+ question : List<Question>
 	+ currentPlayer : Player
 }
 
+class MatchResult{
+    + player : Player
+	+ selectedOptions : List<GameOption> 
+	+ selectedAugmenter : AugmenterType 
+}
+
+class ScoreCalculator{
+    - {static} calculateAndAssignPoints(MatchResult p1Result,p2Result, question)
+	+ checkAugmenters(MatchResult playerResult, Score p1Score, Score p2Score)
+}
+
 class Player{
     + name : String
 	+ score : int
 	+ augmentersUsesAvailable : Map<AugmenterType, Int>
-    - answerQuestion()
 }
 
 abstract ScoreAugmenter{
@@ -38,17 +53,19 @@ abstract ScoreAugmenter{
 }
 
 
-Game  -->  Question
-Game -->  Player
+Game  --down>  Question
+Game --down>  Player
 
 OptionGroup --|> GameOption
 
-Player --right> Question
-Question ..> Player
+ScoreCalculator --right> MatchResult
+ScoreCalculator --> Question
 
-Player --> ScoreAugmenter
-ScoreAugmenter ..> Player 
+MatchResult "1"*--up"1" Player
+MatchResult o-- ScoreAugmenter
 
-Question "1"*--"*" GameOption
+Player "1"*--"1" Score
+
+Question "1"*--up"*" GameOption
 
 @enduml
