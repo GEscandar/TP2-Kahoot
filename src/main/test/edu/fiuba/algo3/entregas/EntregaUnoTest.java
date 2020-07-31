@@ -99,6 +99,7 @@ public class EntregaUnoTest {
 		
 		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionTrue);
 		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionFalse);
+
 		ScoreCalculator.calculateAndAssignPoints(question, resultJugadorUno, resultJugadorDos);
 		
 		assertEquals(-1, jugadorUno.getScore().getValue());
@@ -136,7 +137,9 @@ public class EntregaUnoTest {
 		
 		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno);
 		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos);
+
 		ScoreCalculator.calculateAndAssignPoints(question, resultJugadorUno, resultJugadorDos);
+
 		
 		assertEquals(1, jugadorUno.getScore().getValue());
 		assertEquals(0, jugadorDos.getScore().getValue());
@@ -171,7 +174,9 @@ public class EntregaUnoTest {
 		
 		MatchResult resultJugadorUno = new MatchResult(jugadorUno, opcionesJugadorUno);
 		MatchResult resultJugadorDos = new MatchResult(jugadorDos, opcionesJugadorDos);
+
 		ScoreCalculator.calculateAndAssignPoints(question, resultJugadorUno, resultJugadorDos);
+
 		
 		assertEquals(new Score(1), jugadorUno.getScore());
 		assertEquals(new Score(2), jugadorDos.getScore());

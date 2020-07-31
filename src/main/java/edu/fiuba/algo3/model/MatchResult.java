@@ -36,7 +36,20 @@ public class MatchResult {
 		selectedOptions.add(selectedOption);
 		this.selectedAugmenter = selectedAugmenter;
 	}
-	
+
+	public MatchResult(Player player, List<GameOption> selectedOptions) {
+		this.player = player;
+		this.selectedOptions = selectedOptions;
+		this.selectedAugmenter = null;
+	}
+
+	public MatchResult(Player player, GameOption selectedOption) {
+		this.player = player;
+		this.selectedOptions = new ArrayList<>();
+		selectedOptions.add(selectedOption);
+		this.selectedAugmenter = null;
+	}
+
 	public Player getPlayer() {
 		return player;
 	}
