@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.constants.ResourceConstants;
 import edu.fiuba.algo3.engine.questions.TrueFalseQuestion;
 import edu.fiuba.algo3.exceptions.QuestionsNotLoadedException;
@@ -193,7 +192,7 @@ public class GameTest {
                 Arrays.asList(new GameOption("2"), new GameOption("3"), new GameOption("4")), // suma uno
                 Arrays.asList(new GameOption("1"), new GameOption("2")), // suma cero
                 Arrays.asList(new GameOption("1"), new GameOption("2"), new GameOption("3"), new GameOption("4")), // suma uno -> suma cuatro
-                Arrays.asList(new GameOption("Verdadero")), // suma uno -> suma tres
+                Arrays.asList(new GameOption("Verdadero")), // suma uno -> suma uno porque no corresponde el augmenter
                 Arrays.asList(new GameOption("Falso")), // resta uno -> resta dos
                 Arrays.asList() // suma cero
         );
@@ -207,7 +206,7 @@ public class GameTest {
                 new TwoMultiplier(),
                 new NoMultiplier());
 
-        // 2 + 1 + 0 + 4 + 3 - 2 = 8
+        // 2 + 1 + 0 + 4 + 1 - 2 = 8
 
         Iterator<List<GameOption>> iterador1 = respuestasJugador1.iterator();
         Iterator<List<GameOption>> iterador2 = respuestasJugador2.iterator();
@@ -222,7 +221,7 @@ public class GameTest {
         }
 
         Assertions.assertEquals(new Score(0), jugadorUno.getScore());
-        Assertions.assertEquals(new Score(8), jugadorDos.getScore());
+        Assertions.assertEquals(new Score(6), jugadorDos.getScore());
         Assertions.assertEquals(jugadorDos, game.getWinner());
     }
 
@@ -237,14 +236,14 @@ public class GameTest {
 
     @Test
     public void sePuedeSaberSiUnAugmenterExistenteEsValidoPorSuNombreTest() {
-        boolean augmenterValido = game.isAugmenterAvailable(AugmenterType.EXCLUSIVITY.toString());
+        boolean augmenterValido = game.isAugmenterAvailable(new ExclusivityMultiplier());
         Assertions.assertTrue(augmenterValido);
     }
 
     @Test
     public void sePuedeSaberSiUnAugmenterAgotadoEsValidoPorSuNombreYNoDebeSerloTest() {
         game.getCurrentPlayer().getAugmenter(new ThreeMultiplier());
-        boolean augmenterValido = game.isAugmenterAvailable(AugmenterType.MULTIPLY_PER_THREE.toString());
+        boolean augmenterValido = game.isAugmenterAvailable(new ThreeMultiplier());
         Assertions.assertFalse(augmenterValido);
     }
 }

@@ -81,7 +81,11 @@ public class Game {
 	public void nextTurn(List<GameOption> selectedOptions, ScoreAugmenter augmenter){
 		Score matchScore = new Score(currentQuestion.calculatePoints(selectedOptions));
 
-		matchResults.add(new MatchResult(currentPlayer, augmenter, matchScore));
+		if(isAugmenterAvailable(augmenter)) {
+			matchResults.add(new MatchResult(currentPlayer, augmenter, matchScore));
+		}else {
+			matchResults.add(new MatchResult(currentPlayer, matchScore));
+		}
     
 		if(playersIterator.hasNext()){
 			currentPlayer = playersIterator.next();
@@ -112,11 +116,9 @@ public class Game {
 		return players.size() * questions.size();
 	}
 	
-	public boolean isAugmenterAvailable(String augmenterString){
-		AugmenterType augmenter = AugmenterType.getEnumByName(augmenterString);	
-		ScoreAugmenter scoreAugmenter = augmenter.getScoreAugmenter();
+	public boolean isAugmenterAvailable(ScoreAugmenter scoreAugmenter){
 		
 		return scoreAugmenter.isForPenalty() == currentQuestion.hasPenalty() &&
-				currentPlayer.hasAugmenter(augmenter);
+				currentPlayer.hasAugmenter(scoreAugmenter);
 	}
 }
