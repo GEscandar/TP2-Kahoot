@@ -3,42 +3,49 @@
 skinparam classAttributeIconSize 0
 
 abstract Question{
-    + id : long
-    + text : String
-    + options : List<GameOption>
+    - id : long
+    - text : String
+    - options : List<GameOption>
     # correctOptions : List<GameOption>
-    - {abstract}calculatePoints() : int
-    - {abstract}hasPenalty() : Boolean
+    + {abstract}calculatePoints() : int
+    + {abstract}getType() : QuestionType
+    + {abstract}hasPenalty() : Boolean
 }
 
 class TrueFalseQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 class TrueFalseWithPenaltyQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 class OrderedChoiceQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 class MultipleChoiceQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 class MultipleChoiceWithPenaltyQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 class GroupChoiceQuestion{
     - calculatePoints(List<GameOption> selectedOptions) : int
     - hasPenalty() : Boolean
+    - getType() : QuestionType
 }
 
 

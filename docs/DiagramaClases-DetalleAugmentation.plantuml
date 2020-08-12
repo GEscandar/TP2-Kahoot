@@ -4,32 +4,32 @@ skinparam classAttributeIconSize 0
 
 abstract ScoreAugmenter{
     - {abstract}applyScoreAugmenter(Score score, Score opponentScore)
-    # {abstract}isNil() : Boolean
-    # {abstract}getAugmenterType() : AugmenterType
+    # {abstract}isForPenalty() : boolean
+    # {abstract}getUsesPerPlayer() : int
 }
 
 class ThreeMultiplyer{
     # applyNewScore(Score score, Score opponentScore)
-    # getAugmenterType() : AugmenterType
-    # isNil() : Boolean
+    # getUsesPerPlayer() : int
+    # isForPenalty() : boolean
 }
 
 class TwoMultiplyer{
     # applyNewScore(Score score, Score opponentScore)
-    # getAugmenterType() : AugmenterType
-    # isNil() : Boolean
+    # getUsesPerPlayer() : int
+    # isForPenalty() : boolean
 }
 
 class ExclusivityMultiplier{
     # applyNewScore(Score score, Score opponentScore)
-    # getAugmenterType() : AugmenterType
-    # isNil() : Boolean
+    # getUsesPerPlayer() : int
+    # isForPenalty() : boolean
 }
 
 class NoMultiplier{
     # applyNewScore(Score score, Score opponentScore)
-    # getAugmenterType() : AugmenterType
-    # isNil() : Boolean
+    # getUsesPerPlayer() : int
+    # isForPenalty() : boolean
 }
 
 
