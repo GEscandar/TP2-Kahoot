@@ -54,19 +54,19 @@ Diagrama de clases principal del proyecto:
 
 Para la clase abstracta ScoreAugmenter, se creó un diagrama de clases en detalle:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/DiagramaClases-DetalleAugmentation/DiagramaUML-DetalleAugmentation-TP2.png">
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaClases-DetalleAugmentation/DiagramaUML-DetalleAugmentation-TP2.png">
 
 Lo mismo para el detalle de la clase abstracta Question:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/DiagramaClases-DetallePreguntas-TP2/DiagramaUML-DetallePreguntas-TP2.png">
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaClases-DetallePreguntas-TP2/DiagramaUML-DetallePreguntas-TP2.png">
 
 Diagrama de Secuencia para calculo de puntaje a un jugador:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/DiagramaSecuencia-ConestarPregunta/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta.png">
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-ConestarPregunta/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta.png">
 
 Ya para el caso del jugador que aplica un multiplicador o exclusividad: 
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/DiagramaSecuencia-ConestarPreguntaconAugmenter/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png">
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-ConestarPreguntaconAugmenter/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png">
 
 ## Licencia
 
