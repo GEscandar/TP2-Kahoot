@@ -1,24 +1,24 @@
 package edu.fiuba.algo3.controller;
 
+import edu.fiuba.algo3.engine.score.augmenters.ExclusivityMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.ThreeMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.TwoMultiplier;
 import edu.fiuba.algo3.model.Game;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 
 
-public class AugmenterPaneController {
+public class ScoreAugmenterPaneController {
+
     @FXML
     public RadioButton augmenterx2;
-
     @FXML
     public RadioButton augmenterx3;
+    @FXML
+    public RadioButton exclusivity;
 
     private GameController controller;
-    private TwoMultiplier x2Multiplier = new TwoMultiplier();
-    private ThreeMultiplier x3Multiplier = new ThreeMultiplier();
 
     public void initialize(GameController gameController, Game game){
         controller = gameController;
@@ -27,6 +27,9 @@ public class AugmenterPaneController {
         }
         if (game.isAugmenterAvailable(new ThreeMultiplier())){
             augmenterx3.setVisible(true);
+        }
+        if (game.isAugmenterAvailable(new ExclusivityMultiplier())){
+            exclusivity.setVisible(true);
         }
     }
 

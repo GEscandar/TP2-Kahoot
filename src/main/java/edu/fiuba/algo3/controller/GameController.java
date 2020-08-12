@@ -3,7 +3,6 @@ package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.constants.Views;
-import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.exceptions.ViewLoadingException;
 import edu.fiuba.algo3.loaders.SceneLoader;
 import edu.fiuba.algo3.model.Game;
@@ -32,9 +31,7 @@ public class GameController {
     @FXML
     public Pane playerPane;
     @FXML
-    public Pane augmenterPane;
-    @FXML
-    public Pane exclusivityPane;
+    public Pane scoreAugmenterPane;
     @FXML
     public Button submitButton;
 
@@ -42,8 +39,7 @@ public class GameController {
     private Game game;
     private String augmenterString;
     private GenericQuestionController currentQuestionController;
-    private AugmenterPaneController currentAugController;
-    private ExclusivityPaneController currentExclController;
+    private ScoreAugmenterPaneController scoreAugmenterController;
 
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
@@ -87,22 +83,11 @@ public class GameController {
         }        
     }
 
-    private void setAugmentersPane(){
+    private void setScoreAugmentersPane(){
         try{
-            SceneLoader.loadInsidePane(augmenterPane, AUGMENTER_PANE);
-            currentAugController = SceneLoader.getCurrentSceneController();
-            currentAugController.initialize(this, this.game);
-        } catch (ViewLoadingException e) {
-            logger.error("View not loaded", e);
-            SceneLoader.loadErrorPage();
-        }
-    }
-
-    private void setExclusivityPane(){
-        try{
-            SceneLoader.loadInsidePane(exclusivityPane, EXCLUSIVITY_PANE);
-            currentExclController = SceneLoader.getCurrentSceneController();
-            currentExclController.initialize(this);
+            SceneLoader.loadInsidePane(scoreAugmenterPane, SCORE_AUGMENTER_PANE);
+            scoreAugmenterController = SceneLoader.getCurrentSceneController();
+            scoreAugmenterController.initialize(this, this.game);
         } catch (ViewLoadingException e) {
             logger.error("View not loaded", e);
             SceneLoader.loadErrorPage();
@@ -112,8 +97,7 @@ public class GameController {
     private void updatePanes(){
         setPlayerPane();
         setQuestionPane();
-        setAugmentersPane();
-        setExclusivityPane();
+        setScoreAugmentersPane();
     }
 
     public Player getCurrentPlayer(){

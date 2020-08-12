@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.AugmenterPaneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.ScoreAugmenterPaneController">
    <children>
-      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <VBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="20.0">
          <children>
             <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X2" visible="false">
                <toggleGroup>
@@ -15,6 +15,7 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X3" toggleGroup="$Augmenters" visible="false" />
+            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad" visible="false" />
          </children>
       </VBox>
    </children>
