@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controller;
 
 
+import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.constants.Views;
 import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.exceptions.ViewLoadingException;
@@ -122,7 +123,8 @@ public class GameController {
     }
 
     public void doNext(){
-    	 game.nextTurn(currentQuestionController.getSelectedAnswers(), new NoMultiplier());
+    	AugmenterType augmenterType = AugmenterType.getEnumByName(augmenterString);
+    	 game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterType.getScoreAugmenter());
          updatePanes();
          if(game.isOver()) endGame();
     }
