@@ -8,7 +8,31 @@ participant "player : Player" as player
 participant "score : Score" as score
 participant "noAugmenter : ScoreAugmenter" as noMultiplier
 
+loop n players
 User -> player ** : new Player("Jugador1")
+player --> User : player
+end loop
+
+loop n questions 
+loop n options 
+User -> option ** : new GameOption("True")
+end loop
+User -> question ** : new Question("True o False?", listaOpciones)
+User -> question : setCorrectOptions()
+end loop
+
+User -> game ** : new Game(jugadores, preguntas)
+
+User -> game : start()
+
+User -> game : nextTurn(opcion1)
+game-> game : nextTurn(opcion1, NoMultiplier)
+game -> question
+game -> score**
+
+User -> game : nextTurn(opcion2)
+
+
 
 User -> player : answerQuestion\n(question, selectedOptionsPlayerN)
 activate player

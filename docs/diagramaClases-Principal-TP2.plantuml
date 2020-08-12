@@ -74,6 +74,7 @@ abstract ScoreAugmenter{
     + {abstract}applyScoreAugmenter(Score score, Score opponentScore)
     + {abstract}getUsesPerPlayer() : int 
     + {abstract}isForPenalty() : boolean
+    + equals(Object obj) : boolean
 }
 
 

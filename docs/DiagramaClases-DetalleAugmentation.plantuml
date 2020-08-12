@@ -3,33 +3,34 @@
 skinparam classAttributeIconSize 0
 
 abstract ScoreAugmenter{
-    - {abstract}applyScoreAugmenter(Score score, Score opponentScore)
-    # {abstract}isForPenalty() : boolean
-    # {abstract}getUsesPerPlayer() : int
+    + {abstract}applyScoreAugmenter(Score score, Score opponentScore)
+    + {abstract}isForPenalty() : boolean
+    + {abstract}getUsesPerPlayer() : int
+    + equals(Object obj) : boolean
 }
 
 class ThreeMultiplyer{
-    # applyNewScore(Score score, Score opponentScore)
-    # getUsesPerPlayer() : int
-    # isForPenalty() : boolean
+    + applyNewScore(Score score, Score opponentScore)
+    + getUsesPerPlayer() : int
+    + isForPenalty() : boolean
 }
 
 class TwoMultiplyer{
-    # applyNewScore(Score score, Score opponentScore)
-    # getUsesPerPlayer() : int
-    # isForPenalty() : boolean
+    + applyNewScore(Score score, Score opponentScore)
+    + getUsesPerPlayer() : int
+    + isForPenalty() : boolean
 }
 
 class ExclusivityMultiplier{
-    # applyNewScore(Score score, Score opponentScore)
-    # getUsesPerPlayer() : int
-    # isForPenalty() : boolean
+    + applyNewScore(Score score, Score opponentScore)
+    + getUsesPerPlayer() : int
+    + isForPenalty() : boolean
 }
 
 class NoMultiplier{
-    # applyNewScore(Score score, Score opponentScore)
-    # getUsesPerPlayer() : int
-    # isForPenalty() : boolean
+    + applyNewScore(Score score, Score opponentScore)
+    + getUsesPerPlayer() : int
+    + isForPenalty() : boolean
 }
 
 
