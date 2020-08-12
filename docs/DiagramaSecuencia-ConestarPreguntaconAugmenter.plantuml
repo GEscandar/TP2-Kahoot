@@ -8,40 +8,63 @@ participant "player : Player" as player
 participant "score : Score" as score
 participant "multiplierX2 : TwoMultiplier" as multiplierx2
 
+loop n players
 User -> player ** : new Player("Jugador1")
-User -> multiplierx2 ** : new 
-User -> player : answerQuestionWithAugmenter\n(question, selectedOptions, multiplerx2)
-activate player
+player --> User : player
+end loop
 
-player -> score : setAugmenter(multiplierx2) 
+loop n questions 
+loop n options 
+User -> option ** : new GameOption(optionText)
+option --> User : option
+end loop
+User -> question ** : new Question(stringText, listaOpciones)
+question --> User : question
+User -> question : setCorrectOptions()
+end loop
 
-player -> Question : calculatePoints(selectedOption)
+User -> game ** : new Game(jugadores, preguntas)
+game --> User : game
+User -> game : start()
+activate game
 
-activate Question
-Question --> player : points
-deactivate Question
+loop for n players
+User -> game : nextTurn(selectedOption, multiplierx2)
+activate game
 
-player -> score : setQuestionScore(points)
-deactivate player
+game -> question : calculate()
+activate question
+question --> game : points
+deactivate question
 
-User -> ScoreCalculator : calculateAndAssignPoints(player ... playerN)
+game -> score** : new Score(points)
+score --> game : matchScore
+
+game -> matchResult** : new matchResult\n(currentPlr, augmenter, matchScore)
+matchResult --> game : matchResults.add()
+
+game -> ScoreCalculator : calculateRoundEndResults(matchResults)
+deactivate game
 activate ScoreCalculator
-
-ScoreCalculator -> ScoreCalculator : calculate(playerList)
+ScoreCalculator -> ScoreCalculator : calculateAugmenters\n(matchResult)
 activate ScoreCalculator
-loop N players
-loop N players
-ScoreCalculator -> player : updateScore(opponentScore)
-activate player
-player -> score : update(opponentScore)
-deactivate player
-activate score
-score -> multiplierX2 : applyScoreAugmenter(this, opponentScore)
-deactivate score
-
+ScoreCalculator -> matchResult : applyScoreAugmenter\n(matchResults)
+activate matchResult
+matchResult -> multiplierx2 : applyScoreAugmenter\n(matchScore, result.getMatchScore()) 
+activate multiplierx2
+multiplierx2 -> score : setValue(score.getValue() * 2)
+deactivate multiplierx2
+deactivate matchResult
+deactivate ScoreCalculator
+ScoreCalculator -> ScoreCalculator : sumMatchScore\n(MatchResults)
+activate ScoreCalculator
+ScoreCalculator -> matchResult : sumMatchScoreToPlayer\n(matchScore)
+activate matchResult
+matchResult -> player : sumScore(matchScore)
+deactivate matchResult
 deactivate ScoreCalculator
 end loop
-end loop
 deactivate ScoreCalculator
+deactivate game
 
 @enduml
