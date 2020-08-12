@@ -75,6 +75,25 @@ public class GameTest {
     }
 
     @Test
+    public void unJugadorConMasPuntajeQueElOtroResultaGanadorTest() {
+        Player jugadorUno = new Player("JugadorUno");
+        Player jugadorDos = new Player("JugadorDos");
+        jugadorUno.sumScore(new Score(100));
+        jugadorDos.sumScore(new Score(50));
+        List<GameOption> listaOpciones = Mockito.mock(ArrayList.class);
+        List<Player> lista = new ArrayList<>();
+        lista.add(jugadorUno);
+        lista.add(jugadorDos);
+        List<Question> questions = new ArrayList<>();
+        questions.add(new TrueFalseQuestion("¿1 es mayor a 2?", listaOpciones));
+        game.setQuestions(questions);
+        Game game = new Game(lista, questions);
+        game.start();
+        game.nextTurn(new ArrayList<GameOption>(), new TwoMultiplier());
+        assertEquals(jugadorUno, game.getWinner());
+    }
+
+    @Test
     public void ambosJugadoresRespondenTodoMalYLosPuntajesSonMenosUnoTest() {
         while (!game.isOver()) game.nextTurn(new ArrayList(), new NoMultiplier());
 
