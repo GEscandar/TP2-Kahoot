@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.engine.score.augmenters.ExclusivityMultiplier;
+import edu.fiuba.algo3.engine.score.augmenters.ThreeMultiplier;
 import edu.fiuba.algo3.model.Score;
 import org.junit.jupiter.api.Test;
 
@@ -69,7 +71,7 @@ public class ScoreCalculatorTest {
 		Score matchScorePlayerTwo = new Score(question.calculatePoints(opcionFalse));
 		
 		resultadosRonda.add(new MatchResult(jugadorUno, matchScorePlayerOne));
-		resultadosRonda.add(new MatchResult(jugadorDos, AugmenterType.MULTIPLY_PER_THREE, matchScorePlayerTwo));
+		resultadosRonda.add(new MatchResult(jugadorDos, new ThreeMultiplier(), matchScorePlayerTwo));
 		
 		ScoreCalculator.calculateRoundEndResults(resultadosRonda);
 		
@@ -100,7 +102,7 @@ public class ScoreCalculatorTest {
 		Score matchScorePlayerTwo = new Score(question.calculatePoints(opcionFalse));
 		
 		resultadosRonda.add(new MatchResult(jugadorUno, matchScorePlayerOne));
-		resultadosRonda.add(new MatchResult(jugadorDos, AugmenterType.EXCLUSIVITY, matchScorePlayerTwo));
+		resultadosRonda.add(new MatchResult(jugadorDos, new ExclusivityMultiplier(), matchScorePlayerTwo));
 		
 		ScoreCalculator.calculateRoundEndResults(resultadosRonda);
 
@@ -130,8 +132,8 @@ public class ScoreCalculatorTest {
 		Score matchScorePlayerOne = new Score(question.calculatePoints(opcionFalse));
 		Score matchScorePlayerTwo = new Score(question.calculatePoints(opcionFalse));
 		
-		resultadosRonda.add(new MatchResult(jugadorUno, AugmenterType.EXCLUSIVITY, matchScorePlayerOne));
-		resultadosRonda.add(new MatchResult(jugadorDos, AugmenterType.EXCLUSIVITY, matchScorePlayerTwo));
+		resultadosRonda.add(new MatchResult(jugadorUno, new ExclusivityMultiplier(), matchScorePlayerOne));
+		resultadosRonda.add(new MatchResult(jugadorDos, new ExclusivityMultiplier(), matchScorePlayerTwo));
 		
 		ScoreCalculator.calculateRoundEndResults(resultadosRonda);
 
@@ -162,8 +164,8 @@ public class ScoreCalculatorTest {
 		Score matchScorePlayerOne = new Score(question.calculatePoints(opcionTrue));
 		Score matchScorePlayerTwo = new Score(question.calculatePoints(opcionFalse));
 		
-		resultadosRonda.add(new MatchResult(jugadorUno, AugmenterType.EXCLUSIVITY, matchScorePlayerOne));
-		resultadosRonda.add(new MatchResult(jugadorDos, AugmenterType.EXCLUSIVITY, matchScorePlayerTwo));
+		resultadosRonda.add(new MatchResult(jugadorUno, new ExclusivityMultiplier(), matchScorePlayerOne));
+		resultadosRonda.add(new MatchResult(jugadorDos, new ExclusivityMultiplier(), matchScorePlayerTwo));
 		
 		ScoreCalculator.calculateRoundEndResults(resultadosRonda);
 

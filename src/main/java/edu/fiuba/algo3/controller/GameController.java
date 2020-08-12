@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controller;
 
 
 import edu.fiuba.algo3.constants.Views;
+import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.exceptions.ViewLoadingException;
 import edu.fiuba.algo3.loaders.SceneLoader;
 import edu.fiuba.algo3.model.Game;
@@ -121,7 +122,7 @@ public class GameController {
     }
 
     public void doNext(){
-    	 game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterString);
+    	 game.nextTurn(currentQuestionController.getSelectedAnswers(), new NoMultiplier());
          updatePanes();
          if(game.isOver()) endGame();
     }
