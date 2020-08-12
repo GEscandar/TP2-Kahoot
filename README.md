@@ -68,6 +68,11 @@ Ya para el caso del jugador que aplica un multiplicador o exclusividad:
 
 <img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-ConestarPreguntaconAugmenter/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png">
 
+Diagrama de secuencia del flujo normal del juego (una vez el juego fue inicializado con los jugadores y las preguntas): 
+
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-FlujoJuego/DiagramaSecuencia-FlujoJuego.jpg">
+
+
 ## Licencia
 
 Este repositorio está bajo la Licencia MIT
