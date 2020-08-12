@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.controller;
 
+import edu.fiuba.algo3.engine.score.augmenters.ThreeMultiplier;
+import edu.fiuba.algo3.engine.score.augmenters.TwoMultiplier;
 import edu.fiuba.algo3.model.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,13 +17,15 @@ public class AugmenterPaneController {
     public RadioButton augmenterx3;
 
     private GameController controller;
+    private TwoMultiplier x2Multiplier = new TwoMultiplier();
+    private ThreeMultiplier x3Multiplier = new ThreeMultiplier();
 
     public void initialize(GameController gameController, Game game){
         controller = gameController;
-        if (game.isAugmenterAvailable(augmenterx2.getId())){
+        if (game.isAugmenterAvailable(new TwoMultiplier())){
             augmenterx2.setVisible(true);
         }
-        if (game.isAugmenterAvailable(augmenterx3.getId())){
+        if (game.isAugmenterAvailable(new ThreeMultiplier())){
             augmenterx3.setVisible(true);
         }
     }
