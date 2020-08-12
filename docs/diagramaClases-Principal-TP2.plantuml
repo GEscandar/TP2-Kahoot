@@ -3,15 +3,15 @@ hide circle
 skinparam classAttributeIconSize 0
 
 abstract Question{
-    + id : long
+    - id : long
     + options : List<GameOption>
     # correctOptions : List<GameOption>
-    - {abstract}calculatePoints(List<GameOptions>) : int
+    + {abstract}calculatePoints(List<GameOptions>) : int
 }
 
 class GameOption{
-    + id : long
-	+ text : String
+    - id : long
+	- text : String
     + equals(Object obj) : Boolean
 }
 
@@ -19,57 +19,77 @@ class OptionGroup{
     + options : List<GameOption>
 }
 
+class MatchResult{
+    - player : Player
+	- selectedAugmenter : ScoreAugmenter
+	- matchScore : Score
+    + getMatchScore() : Score
+    + sumMatchScoreToPlayer()
+    + applyScoreAugmenter(List<MatchResult> resultList) 
+}
+
 class Score{
     - value : int
-	- questionScore : int
-	- augmenter : ScoreAugmenter
-    + update(Score oponentScore)
-    + setQuestionScore()
-    + setAugmenter()
+    + sum(Score score)
+    + biggerThan(Score score) : boolean
     + equals(Object obj) : Boolean
 }
 
-class Game{
-    + players : List<Player>
-	+ question : List<Question>
-	+ currentPlayer : Player
+class Game{	
+    - players : List<Player>
+	- question : List<Question>
+    - matchResults : List<MatchResult>
+    - playersIterator : Iterator<Player>
+    - questionIterator : Iterator<Question>
+	- currentPlayer : Player
+    - currentQuestion : Question
+    + isOver : boolean
     + start()
+    + isOver()
+    + newRound()
+    + getTurnCount() : int
+    + isAugmenterAvailable(String augmenterString) : boolean
     + nextTurn(selectedOptions, selectedAugmenter)
     + getWinner()
 }
 
 class ScoreCalculator{
-    - {static} calculateAndAssignPoints(Player ... players)
-	+ {static} calculate(List<Player> players)
+    + {static} calculateRoundEndResults(List<MatchResult> matchResults)
+	- {static} calculateAugmenters(List<MatchResult> matchResults)
+    - {static} sumMatchScore(List<MatchResult> matchResults)
+
 }
 
 class Player{
-    + name : String
-	+ score : int
-	+ augmentersUsesAvailable : Map<AugmenterType, Int>
-    + answerQuestion(List<GameOption> selectedOption)
-    + answerQuestionWithAugmenter(selectedOption, augmenter)
-    + updateScore(Score score)
+    - name : String
+	- score : int
+    - augmenters : List<ScoreAugmenter>
+	- loadAugmenters()
+    + augmentersUsesAvailable : Map<AugmenterType, Int>
+    + sumScore(Score matchScore)
+    + hasAugmenter(AugmenterType augmenterType) : boolean
 }
 
 abstract ScoreAugmenter{
-    - {abstract}applyScoreAugmenter(Score score, Score opponentScore)
-    # {abstract}isNil() : Boolean
-    # {abstract}getAugmenterType() : AugmenterType
+    + {abstract}applyScoreAugmenter(Score score, Score opponentScore)
+    + {abstract}getUsesPerPlayer() : int 
+    + {abstract}isForPenalty() : boolean
 }
 
 
-Game  o--"1..*"  Question
-Game o--"1..*"  Player
+Game  o--up"1..*"  Question
+Game o--right"1..*"  Player
+Game o--down"1..*"  MatchResult
+Game --right> ScoreCalculator
 
-Score "1..1"*--left ScoreAugmenter
+Score "1..1"*-- ScoreAugmenter
 ScoreCalculator --> Player
 
-Player --left> Question
+Player --> Question
 
-Player "1..1"*-- Score
+Player "1..1"*--right Score
 
-Question "1..*"*--left GameOption
-OptionGroup --up|> GameOption
+Question "1..*"*-- GameOption
+OptionGroup --|> GameOption
 
 @enduml
