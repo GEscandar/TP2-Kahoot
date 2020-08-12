@@ -11,9 +11,9 @@ import edu.fiuba.algo3.resources.QuestionViewRouter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import org.slf4j.Logger;
@@ -46,8 +46,10 @@ public class GameController {
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
     public void addAugmenter(MouseEvent event){
-        Label source = (Label) event.getSource();
-        augmenterString = source.getText();
+        RadioButton source = (RadioButton) event.getSource();
+
+        //augmenterString = source.getText();
+        augmenterString = source.getId();
     }
     
     public void play(Game game, Stage stage){
@@ -87,7 +89,7 @@ public class GameController {
         try{
             SceneLoader.loadInsidePane(augmenterPane, AUGMENTER_PANE);
             currentAugController = SceneLoader.getCurrentSceneController();
-            currentAugController.initialize(this);
+            currentAugController.initialize(this, this.game);
         } catch (ViewLoadingException e) {
             logger.error("View not loaded", e);
             SceneLoader.loadErrorPage();
@@ -137,5 +139,4 @@ public class GameController {
         ResultsViewController controller = SceneLoader.getCurrentSceneController();
         controller.initialize(game);
     }
-
 }

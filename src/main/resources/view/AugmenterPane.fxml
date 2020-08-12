@@ -9,12 +9,12 @@
    <children>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <RadioButton fx:id="augmenterx2" mnemonicParsing="false" text="AugX2">
+            <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X2" visible="false">
                <toggleGroup>
                   <ToggleGroup fx:id="Augmenters" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="augmenterx3" mnemonicParsing="false" text="AugX3" toggleGroup="$Augmenters" />
+            <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X3" toggleGroup="$Augmenters" visible="false" />
          </children>
       </VBox>
    </children>
