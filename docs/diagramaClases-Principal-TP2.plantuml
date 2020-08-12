@@ -43,7 +43,7 @@ class Game{
     - questionIterator : Iterator<Question>
 	- currentPlayer : Player
     - currentQuestion : Question
-    + isOver : boolean
+    - isOver : boolean
     + start()
     + isOver()
     + newRound()
@@ -57,15 +57,13 @@ class ScoreCalculator{
     + {static} calculateRoundEndResults(List<MatchResult> matchResults)
 	- {static} calculateAugmenters(List<MatchResult> matchResults)
     - {static} sumMatchScore(List<MatchResult> matchResults)
-
 }
 
 class Player{
     - name : String
-	- score : int
+	- score : Score
     - augmenters : List<ScoreAugmenter>
 	- loadAugmenters()
-    + augmentersUsesAvailable : Map<AugmenterType, Int>
     + sumScore(Score matchScore)
     + hasAugmenter(AugmenterType augmenterType) : boolean
 }
@@ -77,19 +75,22 @@ abstract ScoreAugmenter{
 }
 
 
-Game  o--up"1..*"  Question
-Game o--right"1..*"  Player
-Game o--down"1..*"  MatchResult
-Game --right> ScoreCalculator
+Game  o--left"1..*"  Question
+Game o--"1..*"  Player
+Game o--right"1..*"  MatchResult
+Game --up> ScoreCalculator
 
-Score "1..1"*-- ScoreAugmenter
-ScoreCalculator --> Player
+MatchResult *--up"1..1" ScoreAugmenter
+MatchResult *--"1..1" Player
+MatchResult *--down"1..1" Score 
 
-Player --> Question
+ScoreCalculator --> MatchResult
+
+Player --up> Question
 
 Player "1..1"*--right Score
 
-Question "1..*"*-- GameOption
-OptionGroup --|> GameOption
+Question "1..*"*--up GameOption
+GameOption --up> OptionGroup
 
 @enduml
