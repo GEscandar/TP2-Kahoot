@@ -31,6 +31,10 @@ public class Player {
     public void sumScore(Score matchScore) {
         score.sum(matchScore);
     }
+    
+    public boolean defeatsPlayer(Player opponent) {
+    	return score.biggerThan(opponent.getScore());
+    }
 
     public ScoreAugmenter getAugmenter(ScoreAugmenter augmenter) {
         int index = augmenters.indexOf(augmenter);
