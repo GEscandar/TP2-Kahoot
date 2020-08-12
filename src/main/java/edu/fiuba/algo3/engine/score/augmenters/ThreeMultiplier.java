@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.engine.score.augmenters;
 
+import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.constants.AugmenterUses;
 import edu.fiuba.algo3.model.Score;
 
@@ -18,6 +19,11 @@ public class ThreeMultiplier extends ScoreAugmenter{
 	@Override
 	public boolean isForPenalty() {
 		return true;
+	}
+
+	@Override
+	public AugmenterType getType() {
+		return AugmenterType.MULTIPLY_PER_THREE;
 	}
 
 }

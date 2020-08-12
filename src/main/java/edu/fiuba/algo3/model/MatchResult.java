@@ -11,12 +11,12 @@ public class MatchResult {
 	private ScoreAugmenter selectedAugmenter;
 	private Score matchScore;
 
-	public MatchResult(Player player, AugmenterType selectedAugmenter, Score matchScore) {
+	public MatchResult(Player player, ScoreAugmenter augmenter, Score matchScore) {
 		this.player = player;
-		this.selectedAugmenter = player.getAugmenter(selectedAugmenter);
+		this.selectedAugmenter = player.getAugmenter(augmenter);
 		this.matchScore = matchScore;
 	}
-	
+
 	public MatchResult(Player player, Score matchScore) {
 		this.player = player;
 		this.selectedAugmenter = AugmenterType.NO_MULTIPLIER.getScoreAugmenter();

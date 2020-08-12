@@ -2,7 +2,9 @@ package edu.fiuba.algo3.model;
 
 import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.engine.score.ScoreCalculator;
+import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.ScoreAugmenter;
+import javafx.animation.PauseTransition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,29 +64,29 @@ public class Game {
 	}
 	
 	public void nextTurn(GameOption selectedOption){
-		nextTurn(selectedOption, null);
+		nextTurn(selectedOption, new NoMultiplier());
 	}
 
-	public void nextTurn(GameOption selectedOption, String augmenterString){
+	public void nextTurn(GameOption selectedOption, ScoreAugmenter augmenter){
 		List<GameOption> selectedOptions = new ArrayList<>();
 		selectedOptions.add(selectedOption);
-		nextTurn(selectedOptions, augmenterString);
+		nextTurn(selectedOptions, augmenter);
 	}
-	
+
 	public void nextTurn(List<GameOption> selectedOptions){
-		nextTurn(selectedOptions, null);
+		nextTurn(selectedOptions, new NoMultiplier());
 	}
-	
-	public void nextTurn(List<GameOption> selectedOptions, String augmenterString){			
-		Score matchScore = new Score(currentQuestion.calculatePoints(selectedOptions));		
-		
-		if(isAugmenterAvailable(augmenterString)) {
-			AugmenterType selectedAugmenter = AugmenterType.getEnumByName(augmenterString);
-			matchResults.add(new MatchResult(currentPlayer, selectedAugmenter, matchScore));
+  
+  
+	public void nextTurn(List<GameOption> selectedOptions, ScoreAugmenter augmenter){
+		Score matchScore = new Score(currentQuestion.calculatePoints(selectedOptions));
+
+		if(isAugmenterAvailable(augmenter)) {
+			matchResults.add(new MatchResult(currentPlayer, augmenter, matchScore));
 		}else {
 			matchResults.add(new MatchResult(currentPlayer, matchScore));
 		}
-		
+    
 		if(playersIterator.hasNext()){
 			currentPlayer = playersIterator.next();
 		}
@@ -94,7 +96,7 @@ public class Game {
 			if(questionIterator.hasNext()){
 				currentQuestion = questionIterator.next();
 				newRound();
-			}else { 
+			}else {
 				isOver = true;
 			}
 		}
@@ -114,10 +116,9 @@ public class Game {
 		return players.size() * questions.size();
 	}
 	
-	public boolean isAugmenterAvailable(String augmenterString){
-		AugmenterType augmenter = AugmenterType.getEnumByName(augmenterString);	
-		ScoreAugmenter scoreAugmenter = augmenter.getScoreAugmenter();
+	public boolean isAugmenterAvailable(ScoreAugmenter scoreAugmenter){
 		
-		return scoreAugmenter.isForPenalty() == currentQuestion.hasPenalty() && currentPlayer.hasAugmenter(augmenter);		
+		return scoreAugmenter.isForPenalty() == currentQuestion.hasPenalty() &&
+				currentPlayer.hasAugmenter(scoreAugmenter);
 	}
 }

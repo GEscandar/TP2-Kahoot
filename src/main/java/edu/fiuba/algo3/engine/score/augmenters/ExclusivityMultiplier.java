@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.engine.score.augmenters;
 
+import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.constants.AugmenterUses;
 import edu.fiuba.algo3.model.Score;
 
@@ -25,6 +26,11 @@ public class ExclusivityMultiplier extends ScoreAugmenter {
 	@Override
 	public boolean isForPenalty() {
 		return false;
+	}
+
+	@Override
+	public AugmenterType getType() {
+		return AugmenterType.EXCLUSIVITY;
 	}
 
 }
