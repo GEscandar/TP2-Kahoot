@@ -58,7 +58,7 @@ Para la clase abstracta ScoreAugmenter, se creó un diagrama de clases en detall
 
 Lo mismo para el detalle de la clase abstracta Question:
 
-<img src="https://github.com/GEscandar/TP2-Kahoot/blob/actualizacion-diagramas/docs/out/DiagramaClases-DetallePreguntas-TP2/DiagramaClases-DetallePreguntas-TP2.png?raw=true">
+<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/DiagramaClases-DetallePreguntas-TP2/DiagramaUML-DetallePreguntas-TP2.png">
 
 Diagrama de Secuencia para calculo de puntaje a un jugador:
 
