@@ -11,7 +11,7 @@ public class ExclusivityMultiplier extends ScoreAugmenter {
 		if(questionScore.getValue() == opponentQuestionScore.getValue()){
 			questionScore.setValue(0);
 			opponentQuestionScore.setValue(0);
-		}else if(questionScore.getValue() > 0) {
+		}else if(questionScore.getValue() > opponentQuestionScore.getValue()) {
 			questionScore.setValue(questionScore.getValue() * 2);
 		}else {
 			opponentQuestionScore.setValue(opponentQuestionScore.getValue() * 2);
