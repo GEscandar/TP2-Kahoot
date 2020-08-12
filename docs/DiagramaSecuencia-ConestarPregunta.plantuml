@@ -8,43 +8,57 @@ participant "player : Player" as player
 participant "score : Score" as score
 participant "noAugmenter : ScoreAugmenter" as noMultiplier
 
+loop n players
 User -> player ** : new Player("Jugador1")
-
-User -> player : answerQuestion\n(question, selectedOptionsPlayerN)
-activate player
-
-player -> noMultiplier** : new
-player -> score : setAugmenter(noAugmenter) 
-
-player -> Question : calculatePoints(selectedOption)
-
-activate Question
-Question --> player : points
-deactivate Question
-
-player -> score : setQuestionScore(points)
-deactivate player
-
-User -> ScoreCalculator : calculateAndAssignPoints(player ... playerN)
-activate ScoreCalculator
-
-
-
-ScoreCalculator -> ScoreCalculator : calculate(playerList)
-activate ScoreCalculator
-loop N players
-loop N players
-ScoreCalculator -> player : updateScore(opponentScore)
-activate player
-player -> score : update(opponentScore)
-deactivate player
-activate score
-score -> noMultiplier : applyScoreAugmenter(this, opponentScore)
-deactivate score
-
-deactivate ScoreCalculator
+player --> User : player
 end loop
+
+loop n questions 
+loop n options 
+User -> option ** : new GameOption(optionText)
+option --> User : option
 end loop
+User -> question ** : new Question(stringText, listaOpciones)
+question --> User : question
+User -> question : setCorrectOptions()
+end loop
+
+User -> game ** : new Game(jugadores, preguntas)
+game --> User : game
+User -> game : start()
+activate game
+
+loop for n players
+User -> game : nextTurn(selectedOption)
+game-> game : nextTurn(selectedOption, NoMultiplier)
+activate game
+
+game -> question : calculate()
+activate question
+question --> game : points
+deactivate question
+
+game -> score** : new Score(points)
+score --> game : matchScore
+
+game -> matchResult** : new matchResult\n(currentPlr, augmenter, matchScore)
+matchResult --> game : matchResults.add()
+
+game -> ScoreCalculator : calculateRoundEndResults(matchResults)
+deactivate game
+activate ScoreCalculator
+ScoreCalculator -> ScoreCalculator : calculateAugmenters\n(matchResult)
+ScoreCalculator -> matchResult : applyScoreAugmenter\n(matchResults)
+activate matchResult
+matchResult -> noMultiplier : applyScoreAugmenter\n(matchScore, result.getMatchScore()) 
+deactivate matchResult
 deactivate ScoreCalculator
+ScoreCalculator -> ScoreCalculator : sumMatchScore\n(MatchResults)
+ScoreCalculator -> matchResult : sumMatchScoreToPlayer\n(matchScore)
+activate matchResult
+matchResult -> player : sumScore(matchScore)
+deactivate matchResult
+end loop
+deactivate game
 
 @enduml
