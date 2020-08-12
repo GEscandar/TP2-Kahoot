@@ -13,39 +13,45 @@ abstract Question{
 }
 
 class TrueFalseQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + calculatePoints(GameOption selectedOption) : int
+    + setCorrectOption(GameOption option)
+    + hasPenalty() : Boolean
+    + getType() : QuestionType
 }
 
 class TrueFalseWithPenaltyQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + calculatePoints(GameOption selectedOption) : int
+    + setCorrectOption(GameOption option)
+    + hasPenalty() : Boolean
+    + getType() : QuestionType
 }
 
 class OrderedChoiceQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + hasPenalty() : Boolean
+    + getType() : QuestionType
 }
 
 class MultipleChoiceQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + hasPenalty() : Boolean
+    + getType() : QuestionType
 }
 
 class MultipleChoiceWithPenaltyQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + hasPenalty() : Boolean
+    + getType() : QuestionType
 }
 
 class GroupChoiceQuestion{
-    - calculatePoints(List<GameOption> selectedOptions) : int
-    - hasPenalty() : Boolean
-    - getType() : QuestionType
+    - groupList :  List<OptionGroup>
+    + calculatePoints(List<GameOption> selectedOptions) : int
+    + hasPenalty() : Boolean
+    + getOptionGroupList() : List<OptionGroup> 
+    + getType() : QuestionType
 }
 
 

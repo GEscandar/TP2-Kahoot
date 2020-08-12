@@ -16,7 +16,9 @@ class GameOption{
 }
 
 class OptionGroup{
-    + options : List<GameOption>
+    - options : List<GameOption>
+    + addOptions(GameOption ... option)
+    + equals(Object obj) : boolean
 }
 
 class MatchResult{
@@ -91,6 +93,6 @@ Player --up> Question
 Player "1..1"*--right Score
 
 Question "1..*"*--up GameOption
-GameOption --up> OptionGroup
+OptionGroup --down|> GameOption
 
 @enduml
