@@ -12,17 +12,11 @@ public class TrueFalseWithPenaltyQuestion extends Question {
     public TrueFalseWithPenaltyQuestion(String text, List<GameOption> optionsList) { super(text, optionsList); }
 
     @Override
-	public int calculatePoints(List<GameOption> selectedOptions) {
+    protected int calculatePoints(List<GameOption> selectedOptions) {
 		if(selectedOptions.equals(correctOptions)) {
 			return 1;
 		}
 		return -1;
-	}
-	
-	public int calculatePoints(GameOption selectedOption) {
-		List<GameOption> selectedOptions = new ArrayList<>();
-		selectedOptions.add(selectedOption);
-		return calculatePoints(selectedOptions);
 	}
 	
 	public void setCorrectOption(GameOption option) {

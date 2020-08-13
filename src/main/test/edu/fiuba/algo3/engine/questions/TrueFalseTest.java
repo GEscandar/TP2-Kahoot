@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.model.GameOption;
+import edu.fiuba.algo3.model.Score;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,8 @@ public class TrueFalseTest {
 		
 		question.setCorrectOption(opcionFalse);
 		
-		assertEquals(1, question.calculatePoints(opcionFalse));
-		assertEquals(0, question.calculatePoints(opcionTrue));
+		assertEquals(new Score(1), question.calculatePoints(opcionFalse));
+		assertEquals(new Score(0), question.calculatePoints(opcionTrue));
 	}
 	
 	@Test
@@ -43,8 +44,8 @@ public class TrueFalseTest {
 
 		question.setCorrectOption(opcionFalse);
 		
-		assertEquals(1, question.calculatePoints(opcionFalse));
-		assertEquals(-1, question.calculatePoints(opcionTrue));
+		assertEquals(new Score(1), question.calculatePoints(opcionFalse));
+		assertEquals(new Score(-1), question.calculatePoints(opcionTrue));
 		
 	}
 	

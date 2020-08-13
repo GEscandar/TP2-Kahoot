@@ -9,7 +9,6 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.constants.Views;
 import edu.fiuba.algo3.exceptions.FatalError;
 import edu.fiuba.algo3.exceptions.ViewLoadingException;
-import edu.fiuba.algo3.exceptions.ViewNotFoundException;
 import edu.fiuba.algo3.resources.ViewFinder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
