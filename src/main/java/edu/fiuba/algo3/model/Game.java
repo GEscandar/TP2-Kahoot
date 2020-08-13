@@ -106,7 +106,7 @@ public class Game {
 		if (players.get(0).getScore() == players.get(1).getScore()){
 			return null;
 		}
-		if (players.get(0).getScore().biggerThan(players.get(1).getScore())){
+		if (players.get(0).defeatsPlayer(players.get(1))){
 			return players.get(0);
 		}
 		return players.get(1);

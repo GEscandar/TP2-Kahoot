@@ -76,11 +76,11 @@ public class GameTest {
 
     @Test
     public void unJugadorConMasPuntajeQueElOtroResultaGanadorTest() {
-        Player jugadorUno = Mockito.mock(Player.class);
-        Player jugadorDos = Mockito.mock(Player.class);
+        Player jugadorUno = new Player("JugadorUno");
+        Player jugadorDos = new Player("JugadorDos");
+        jugadorUno.sumScore(new Score(100));
+        jugadorDos.sumScore(new Score(50));
         List<GameOption> listaOpciones = Mockito.mock(ArrayList.class);
-        Mockito.when(jugadorUno.getScore()).thenReturn(new Score(100));
-        Mockito.when(jugadorDos.getScore()).thenReturn(new Score(50));
         List<Player> lista = new ArrayList<>();
         lista.add(jugadorUno);
         lista.add(jugadorDos);
