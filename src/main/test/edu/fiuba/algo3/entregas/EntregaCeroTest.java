@@ -33,8 +33,8 @@ public class EntregaCeroTest {
 		
 		question.setCorrectOption(opcionFalse);
 		
-		assertEquals(1, question.calculatePoints(opcionFalse));
-		assertEquals(0, question.calculatePoints(opcionTrue));
+		assertEquals(new Score(1), question.calculatePoints(opcionFalse));
+		assertEquals(new Score(0), question.calculatePoints(opcionTrue));
 	}
 	
 	/***

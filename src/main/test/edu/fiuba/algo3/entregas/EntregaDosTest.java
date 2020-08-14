@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entregas;
 
-import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.engine.questions.*;
+import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.ThreeMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.TwoMultiplier;
 import edu.fiuba.algo3.model.*;
@@ -45,7 +45,7 @@ public class EntregaDosTest {
         listaOpcionesElegidas.add(opcionUno);
         listaOpcionesElegidas.add(opcionTres);
 
-        assertEquals(2, question.calculatePoints(listaOpcionesElegidas));
+        assertEquals(new Score(2), question.calculatePoints(listaOpcionesElegidas, new NoMultiplier()));
     }
 
     /***
@@ -101,7 +101,7 @@ public class EntregaDosTest {
         listaOpcionesElegidas.add(opcionElegidaTres);
         listaOpcionesElegidas.add(opcionElegidaCuatro);
 
-        assertEquals(1, question.calculatePoints(listaOpcionesElegidas));
+        assertEquals(new Score(1), question.calculatePoints(listaOpcionesElegidas, new NoMultiplier()));
     }
 
     /***
@@ -132,7 +132,7 @@ public class EntregaDosTest {
         listaOpcionesElegidas.add(opcionDos);
         listaOpcionesElegidas.add(opcionTres);
 
-        assertEquals(1, question.calculatePoints(listaOpcionesElegidas));
+        assertEquals(new Score(1), question.calculatePoints(listaOpcionesElegidas, new NoMultiplier()));
     }
 
     /***

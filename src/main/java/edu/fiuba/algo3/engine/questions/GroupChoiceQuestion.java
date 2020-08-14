@@ -17,7 +17,7 @@ public class GroupChoiceQuestion extends Question {
 	}
 
 	@Override
-	public int calculatePoints(List<GameOption> selectedOptions) {
+	protected int calculatePoints(List<GameOption> selectedOptions) {
 		if(selectedOptions.equals(correctOptions)) {
 			return 1;
 		}

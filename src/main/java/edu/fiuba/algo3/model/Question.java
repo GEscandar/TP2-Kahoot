@@ -1,8 +1,11 @@
 package edu.fiuba.algo3.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import edu.fiuba.algo3.constants.QuestionType;
+import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
+import edu.fiuba.algo3.engine.score.augmenters.ScoreAugmenter;
 
 public abstract class Question {
 
@@ -35,12 +38,28 @@ public abstract class Question {
 	public void setText(String text) {
 		this.text = text;
 	}
-
+	
+	public Score calculatePoints(List<GameOption> selectedOptions, ScoreAugmenter augmenter) {
+		if(augmenter.isForPenalty() != hasPenalty()) {
+			augmenter = new NoMultiplier(); 
+		}
+		return new Score(calculatePoints(selectedOptions), augmenter);
+	}
+	
+	
+	public Score calculatePoints(GameOption selectedOption, ScoreAugmenter augmenter) {
+		return calculatePoints(Arrays.asList(selectedOption), augmenter);
+	}
+	
+	public Score calculatePoints(GameOption selectedOption) {
+		return calculatePoints(Arrays.asList(selectedOption), new NoMultiplier());
+	}
+	
 	/***
 	 * Returns the earned or lost points depending on the answer to the question
 	 * @return
 	 */
-	public abstract int calculatePoints(List<GameOption> selectedOptions);
+	protected abstract int calculatePoints(List<GameOption> selectedOptions);
 	public  abstract QuestionType getType();
 	public abstract boolean hasPenalty();
 }

@@ -11,7 +11,7 @@ public class OrderedChoiceQuestion extends Question {
     public OrderedChoiceQuestion(String text, List<GameOption> optionList) { super(text, optionList); }
 
     @Override
-	public int calculatePoints(List<GameOption> selectedOptions) {
+    protected int calculatePoints(List<GameOption> selectedOptions) {
 		if(selectedOptions.equals(correctOptions)) {
 			return 1;
 		}
