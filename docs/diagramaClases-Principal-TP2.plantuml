@@ -6,12 +6,14 @@ abstract Question{
     - id : long
     + options : List<GameOption>
     # correctOptions : List<GameOption>
-    + {abstract}calculatePoints(List<GameOptions>) : int
+    + calculatePoints(List<GameOptions>, ScoreAugmenter) : Score
+    + calculatePoints(GameOptions, ScoreAugmenter) : Score
+    # {abstract}calculatePoints(List<GameOptions>) : int
 }
 
 class GameOption{
     - id : long
-	- text : String
+	  - text : String
     + equals(Object obj) : Boolean
 }
 
@@ -22,16 +24,17 @@ class OptionGroup{
 }
 
 class MatchResult{
+    + MatchResult(Player, Score)
     - player : Player
-	- selectedAugmenter : ScoreAugmenter
-	- matchScore : Score
-    + getMatchScore() : Score
+	  - selectedAugmenter : ScoreAugmenter
+	  + matchScore : Score
     + sumMatchScoreToPlayer()
     + applyScoreAugmenter(List<MatchResult> resultList) 
 }
 
 class Score{
-    - value : int
+    + value : int
+    + augmenter
     + sum(Score score)
     + biggerThan(Score score) : boolean
     + equals(Object obj) : Boolean
@@ -39,33 +42,32 @@ class Score{
 
 class Game{	
     - players : List<Player>
-	- question : List<Question>
+	  - question : List<Question>
     - matchResults : List<MatchResult>
     - playersIterator : Iterator<Player>
     - questionIterator : Iterator<Question>
-	- currentPlayer : Player
-    - currentQuestion : Question
-    - isOver : boolean
+	  + currentPlayer : Player
+    + currentQuestion : Question
+    + isOver : boolean
     + start()
-    + isOver()
     + newRound()
     + getTurnCount() : int
-    + isAugmenterAvailable(String augmenterString) : boolean
-    + nextTurn(selectedOptions, selectedAugmenter)
+    + isAugmenterAvailable(ScoreAugmenter) : boolean
+    + nextTurn(List<GameOption>, ScoreAugmenter)
     + getWinner()
 }
 
 class ScoreCalculator{
     + {static} calculateRoundEndResults(List<MatchResult> matchResults)
-	- {static} calculateAugmenters(List<MatchResult> matchResults)
+	  - {static} calculateAugmenters(List<MatchResult> matchResults)
     - {static} sumMatchScore(List<MatchResult> matchResults)
 }
 
 class Player{
     - name : String
-	- score : Score
+	  - score : Score
     - augmenters : List<ScoreAugmenter>
-	- loadAugmenters()
+	  - loadAugmenters()
     + sumScore(Score matchScore)
     + hasAugmenter(AugmenterType augmenterType) : boolean
 }

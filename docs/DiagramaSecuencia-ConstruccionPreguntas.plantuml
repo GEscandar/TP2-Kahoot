@@ -11,9 +11,9 @@ User -> opcionTrue ** : new GameOption("False")
 
 User -> question : setCorrectOption(opcionFalse)
 
-User ->question : calculatePoints(optcionFalse)
+User ->question : calculatePoints(opcionFalse)
 activate question
-question --> User : 2
+question --> User : Score(2)
 deactivate question
 
 @enduml

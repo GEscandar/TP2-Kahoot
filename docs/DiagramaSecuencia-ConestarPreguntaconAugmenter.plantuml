@@ -20,7 +20,7 @@ option --> User : option
 end loop
 User -> question ** : new Question(stringText, listaOpciones)
 question --> User : question
-User -> question : setCorrectOptions()
+User -> question : setCorrectOptions(opcionesCorrectas)
 end loop
 
 User -> game ** : new Game(jugadores, preguntas)
@@ -32,15 +32,10 @@ loop for n players
 User -> game : nextTurn(selectedOption, multiplierx2)
 activate game
 
-game -> question : calculate()
-activate question
-question --> game : points
-deactivate question
-
-game -> score** : new Score(points)
+game -> score** : new Score(points, multiplierx2)
 score --> game : matchScore
 
-game -> matchResult** : new matchResult\n(currentPlr, augmenter, matchScore)
+game -> matchResult** : new matchResult\n(currentPlr, matchScore)
 matchResult --> game : matchResults.add()
 
 game -> ScoreCalculator : calculateRoundEndResults(matchResults)
