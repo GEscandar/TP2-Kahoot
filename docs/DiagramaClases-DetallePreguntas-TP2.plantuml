@@ -7,48 +7,48 @@ abstract Question{
     - text : String
     - options : List<GameOption>
     # correctOptions : List<GameOption>
-    + {abstract}calculatePoints() : int
-    + {abstract}getType() : QuestionType
-    + {abstract}hasPenalty() : Boolean
+    + calculatePoints(options :List<GameOption>, augmenter :ScoreAugmenter) : Score
+    + calculatePoints(option :GameOption, augmenter :ScoreAugmenter) : Score
+    # {abstract}calculatePoints(options :List<GameOption) : int
+    # {abstract}getType() : QuestionType
+    # {abstract}hasPenalty() : Boolean
 }
 
 class TrueFalseQuestion{
-    + calculatePoints(List<GameOption> selectedOptions) : int
-    + calculatePoints(GameOption selectedOption) : int
+    + calculatePoints(options :List<GameOption) : int
     + setCorrectOption(GameOption option)
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class TrueFalseWithPenaltyQuestion{
-    + calculatePoints(List<GameOption> selectedOptions) : int
-    + calculatePoints(GameOption selectedOption) : int
+    + calculatePoints(options :List<GameOption) : int
     + setCorrectOption(GameOption option)
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class OrderedChoiceQuestion{
-    + calculatePoints(List<GameOption> selectedOptions) : int
+    + calculatePoints(options :List<GameOption) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class MultipleChoiceQuestion{
-    + calculatePoints(List<GameOption> selectedOptions) : int
+    + calculatePoints(options :List<GameOption) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class MultipleChoiceWithPenaltyQuestion{
-    + calculatePoints(List<GameOption> selectedOptions) : int
+    + calculatePoints(options :List<GameOption) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class GroupChoiceQuestion{
+    + calculatePoints(options :List<GameOption) : int
     - groupList :  List<OptionGroup>
-    + calculatePoints(List<GameOption> selectedOptions) : int
     + hasPenalty() : Boolean
     + getOptionGroupList() : List<OptionGroup> 
     + getType() : QuestionType
