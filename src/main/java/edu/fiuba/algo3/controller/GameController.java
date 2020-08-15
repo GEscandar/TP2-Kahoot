@@ -112,6 +112,7 @@ public class GameController {
     	AugmenterType augmenterType = AugmenterType.getEnumByName(augmenterString);
     	 game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterType.getScoreAugmenter());
          updatePanes();
+         submitButton.setVisible(false);
          if(game.isOver()) endGame();
     }
     
