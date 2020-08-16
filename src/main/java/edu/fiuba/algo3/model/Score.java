@@ -41,7 +41,7 @@ public class Score {
 		if (getClass() != obj.getClass())
 			return false;
 		Score other = (Score) obj;
-		if (value != other.value)
+		if (this.value != other.getValue())
 			return false;
 		return true;
 	}

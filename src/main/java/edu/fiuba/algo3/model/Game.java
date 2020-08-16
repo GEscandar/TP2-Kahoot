@@ -95,7 +95,7 @@ public class Game {
 	}
 
 	public Player getWinner() {
-		if (players.get(0).getScore().getValue() == players.get(1).getScore().getValue()){
+		if (players.get(0).getScore().equals(players.get(1).getScore())){
 			return null;
 		}
 		if (players.get(0).defeatsPlayer(players.get(1))){
