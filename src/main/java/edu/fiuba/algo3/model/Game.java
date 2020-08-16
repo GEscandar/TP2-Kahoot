@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.model;
 
-import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.engine.score.ScoreCalculator;
 import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.engine.score.augmenters.ScoreAugmenter;
-import javafx.animation.PauseTransition;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -79,14 +76,9 @@ public class Game {
   
   
 	public void nextTurn(List<GameOption> selectedOptions, ScoreAugmenter augmenter){
-		Score matchScore = new Score(currentQuestion.calculatePoints(selectedOptions));
+		Score matchScore = currentQuestion.calculatePoints(selectedOptions, augmenter);
 
-		if(isAugmenterAvailable(augmenter)) {
-			matchResults.add(new MatchResult(currentPlayer, augmenter, matchScore));
-		}else {
-			matchResults.add(new MatchResult(currentPlayer, matchScore));
-		}
-    
+		matchResults.add(new MatchResult(currentPlayer, matchScore));
 		if(playersIterator.hasNext()){
 			currentPlayer = playersIterator.next();
 		}
@@ -103,7 +95,7 @@ public class Game {
 	}
 
 	public Player getWinner() {
-		if (players.get(0).getScore() == players.get(1).getScore()){
+		if (players.get(0).getScore().equals(players.get(1).getScore())){
 			return null;
 		}
 		if (players.get(0).defeatsPlayer(players.get(1))){

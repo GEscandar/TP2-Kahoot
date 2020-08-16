@@ -31,31 +31,36 @@ class Score{
 
 class Game{
     + players : List<Player>
-	+ question : List<Question>
-	+ currentPlayer : Player
+	  + question : List<Question>
+	  + currentPlayer : Player
+    + currentQuestion : Question
     + start()
     + nextTurn(selectedOptions, selectedAugmenter)
     + getWinner()
 }
 
 class ScoreCalculator{
-    - {static} calculateAndAssignPoints(Player ... players)
-	+ {static} calculate(List<Player> players)
+  + {static} calculateRoundEndResults(matchResults :List<MatchResult>)
+	- {static} calculateAugmenters(matchResults :List<MatchResult>)
+  - {static} sumMatchScore(matchResults :List<MatchResult>)
 }
 
 class Player{
     + name : String
-	+ score : int
-	+ augmentersUsesAvailable : Map<AugmenterType, Int>
-    + answerQuestion(List<GameOption> selectedOption)
-    + answerQuestionWithAugmenter(selectedOption, augmenter)
-    + updateScore(Score score)
+	  + score : Score
+	  - augmenters : List<ScoreAugmenter>
+    + sumScore(score :Score)
+    + defeatsPlayer(opponent :Player) :boolean
+    + hasAugmenter(augmenter :ScoreAugmenter) :boolean
+    + getAugmenter(augmenter :ScoreAugmenter) :ScoreAugmenter
+    - loadAugmenters()
 }
 
 abstract ScoreAugmenter{
-    - {abstract}applyScoreAugmenter(Score score, Score opponentScore)
-    # {abstract}isNil() : Boolean
-    # {abstract}getAugmenterType() : AugmenterType
+    + {abstract}applyScoreAugmenter(Score score, Score opponentScore)
+    + {abstract} getUsesPerPlayer :int
+    + {abstract} isForPenalty :boolean
+    # {abstract}getType() : AugmenterType
 }
 
 

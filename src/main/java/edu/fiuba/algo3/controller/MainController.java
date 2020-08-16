@@ -25,9 +25,6 @@ public class MainController {
 	public Button StartButton;
 	
 	@FXML
-	public Button OptionButton;
-	
-	@FXML
 	public Button AboutButton;
 
 	public void exitEvent(ActionEvent event) {
@@ -45,15 +42,12 @@ public class MainController {
 
 	public void startEvent(ActionEvent event)  {
 		try {
+
 			SceneLoader.loadScene(App.getMainStage(),Views.PLAYER_NAME_VIEW);
 		} catch (ViewLoadingException e) {
 			logger.error("View not loaded", e);
 			SceneLoader.loadErrorPage();
 		}
-	}
-
-	public void optionEvent(ActionEvent event){
-
 	}
 	
 }

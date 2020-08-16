@@ -12,7 +12,7 @@ public class MultipleChoicePartialQuestion extends Question {
     public MultipleChoicePartialQuestion(String text, List<GameOption> optionList) { super(text, optionList); }
 
     @Override
-	public int calculatePoints(List<GameOption> selectedOptions) {
+    protected int calculatePoints(List<GameOption> selectedOptions) {
 		int puntaje = 0;
 		for(GameOption option : selectedOptions) {
 			if(correctOptions.contains(option)) {

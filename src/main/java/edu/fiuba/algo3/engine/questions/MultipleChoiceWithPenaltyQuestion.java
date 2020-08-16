@@ -11,7 +11,7 @@ public class MultipleChoiceWithPenaltyQuestion extends Question {
     public MultipleChoiceWithPenaltyQuestion(String text, List<GameOption> optionsList) { super(text, optionsList); }
 
     @Override
-	public int calculatePoints(List<GameOption> selectedOptions) {
+    protected int calculatePoints(List<GameOption> selectedOptions) {
 		int puntaje = 0;
 		for(GameOption option : selectedOptions) {
 			if(correctOptions.contains(option)) {

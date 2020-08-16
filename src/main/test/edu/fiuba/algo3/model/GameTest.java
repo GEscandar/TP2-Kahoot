@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 
 import edu.fiuba.algo3.constants.ResourceConstants;
 import edu.fiuba.algo3.engine.questions.TrueFalseQuestion;
+import edu.fiuba.algo3.engine.questions.TrueFalseWithPenaltyQuestion;
 import edu.fiuba.algo3.exceptions.QuestionsNotLoadedException;
 import edu.fiuba.algo3.loaders.QuestionLoader;
 
@@ -245,5 +246,37 @@ public class GameTest {
         game.getCurrentPlayer().getAugmenter(new ThreeMultiplier());
         boolean augmenterValido = game.isAugmenterAvailable(new ThreeMultiplier());
         Assertions.assertFalse(augmenterValido);
+    }
+    
+    @Test
+    public void exclusividadSeAplicaEnPreguntaSinPenalidadBienContestadaTest() {
+    	Player jugadorUno = new Player("Jugador uno");
+        Player jugadorDos = new Player("Jugador dos");
+		GameOption opcionTrue = new GameOption("True");
+		GameOption opcionFalse = new GameOption("False");
+		TrueFalseQuestion question = new TrueFalseQuestion("¿1 es mayor que 2?", Arrays.asList(opcionTrue, opcionFalse));
+		question.setCorrectOption(opcionFalse);
+        
+        Game game = new Game(Arrays.asList(jugadorUno, jugadorDos), Arrays.asList(question));
+        game.start();
+        game.nextTurn(opcionFalse, new ExclusivityMultiplier());
+        game.nextTurn(opcionTrue);
+        Assertions.assertEquals(new Score(2), jugadorUno.getScore());        
+    }
+    
+    @Test
+    public void exclusividadNoSeAplicaEnPreguntaConPenalidadBienContestadaTest() {
+    	Player jugadorUno = new Player("Jugador uno");
+        Player jugadorDos = new Player("Jugador dos");
+		GameOption opcionTrue = new GameOption("True");
+		GameOption opcionFalse = new GameOption("False");
+		TrueFalseWithPenaltyQuestion question = new TrueFalseWithPenaltyQuestion("¿1 es mayor que 2?", Arrays.asList(opcionTrue, opcionFalse));
+		question.setCorrectOption(opcionFalse);
+        
+        Game game = new Game(Arrays.asList(jugadorUno, jugadorDos), Arrays.asList(question));
+        game.start();
+        game.nextTurn(opcionFalse, new ExclusivityMultiplier());
+        game.nextTurn(opcionTrue);
+        Assertions.assertEquals(new Score(1), jugadorUno.getScore());        
     }
 }

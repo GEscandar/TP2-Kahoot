@@ -7,14 +7,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.constants.AugmenterType;
 import edu.fiuba.algo3.engine.questions.MultipleChoicePartialQuestion;
 import edu.fiuba.algo3.engine.questions.MultipleChoiceQuestion;
 import edu.fiuba.algo3.engine.questions.MultipleChoiceWithPenaltyQuestion;
 import edu.fiuba.algo3.engine.questions.TrueFalseWithPenaltyQuestion;
+import edu.fiuba.algo3.engine.score.augmenters.NoMultiplier;
 import edu.fiuba.algo3.model.Game;
 import edu.fiuba.algo3.model.GameOption;
-import edu.fiuba.algo3.model.MatchResult;
 import edu.fiuba.algo3.model.Player;
 import edu.fiuba.algo3.model.Question;
 import edu.fiuba.algo3.model.Score;
@@ -38,8 +37,8 @@ public class EntregaUnoTest {
 		
 		question.setCorrectOption(opcionFalse);
 		
-		assertEquals(1, question.calculatePoints(opcionFalse));
-		assertEquals(-1, question.calculatePoints(opcionTrue));
+		assertEquals(new Score(1), question.calculatePoints(opcionFalse));
+		assertEquals(new Score(-1), question.calculatePoints(opcionTrue));
 		
 	}
 	
@@ -72,7 +71,7 @@ public class EntregaUnoTest {
 		listaOpcionesElegidas.add(opcionUno);						
 		listaOpcionesElegidas.add(opcionTres);
 		
-		assertEquals(1, question.calculatePoints(listaOpcionesElegidas));
+		assertEquals(new Score(1), question.calculatePoints(listaOpcionesElegidas, new NoMultiplier()));
 	}
 	
 	/***
@@ -104,7 +103,7 @@ public class EntregaUnoTest {
 		listaOpcionesElegidas.add(opcionUno);	
 		listaOpcionesElegidas.add(opcionTres);
 		
-		assertEquals(2, question.calculatePoints(listaOpcionesElegidas));
+		assertEquals(new Score(2), question.calculatePoints(listaOpcionesElegidas, new NoMultiplier()));
 	}
 	
 	/***

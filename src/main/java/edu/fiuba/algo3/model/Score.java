@@ -1,11 +1,19 @@
 package edu.fiuba.algo3.model;
 
+import edu.fiuba.algo3.engine.score.augmenters.ScoreAugmenter;
+
 public class Score {
 
 	private int value;
+	private ScoreAugmenter augmenter;
 
 	public Score(int value){
 		this.value = value;
+	}
+	
+	public Score(int value, ScoreAugmenter augmenter){
+		this.value = value;
+		this.augmenter = augmenter;
 	}
 	
 	public int getValue() {
@@ -33,9 +41,13 @@ public class Score {
 		if (getClass() != obj.getClass())
 			return false;
 		Score other = (Score) obj;
-		if (value != other.value)
+		if (this.value != other.getValue())
 			return false;
 		return true;
+	}
+
+	public ScoreAugmenter getAugmenter() {
+		return augmenter;
 	}
 
 	

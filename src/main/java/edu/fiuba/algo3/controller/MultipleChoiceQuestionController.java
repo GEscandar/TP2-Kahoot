@@ -27,13 +27,5 @@ public class MultipleChoiceQuestionController extends GenericQuestionController{
             button.setVisible(true);
             i++;
         }
-        /*
-        while (i<5){
-            CheckBox unusedButton = buttonList.get(i);
-            unusedButton.setVisible(false);
-            i++;
-        }
-
-         */
     }
 }
