@@ -116,7 +116,10 @@ public class GameController {
          submitButton.setVisible(false);
          if(game.isOver()) endGame();
     }
-    
+    public Button getSubmitButton(){
+        return submitButton;
+    }
+
     private void endGame(){
         try{
             SceneLoader.loadScene(stage, Views.RESULTS_VIEW);

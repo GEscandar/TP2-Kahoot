@@ -9,13 +9,13 @@
    <children>
       <VBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X2" visible="false">
+            <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X2">
                <toggleGroup>
                   <ToggleGroup fx:id="Augmenters" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X3" toggleGroup="$Augmenters" visible="false" />
-            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad" visible="false" />
+            <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X3" toggleGroup="$Augmenters" />
+            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad" />
          </children>
       </VBox>
    </children>

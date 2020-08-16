@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.model.GameOption;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
@@ -12,30 +10,32 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 
+import java.util.Collections;
+import java.util.List;
+
 public class OptionCell extends ListCell<GameOption> {
-    HBox hBox = new HBox();
-    Pane pane = new Pane();
-    Label label = new Label();
-    ComboBox comboBox = new ComboBox();
 
-    public OptionCell(ObservableList <String> positionsList){
+    HBox hBox;
+    Pane pane;
+    Label label;
+    ComboBox<String> comboBox;
+    OrderedChoiceQuestionController controller;
+    String oldValue;
+
+    public OptionCell(OrderedChoiceQuestionController orderedController) {
         super();
+        hBox = new HBox();
+        pane = new Pane();
+        label = new Label();
+        comboBox = new ComboBox();
+        controller = orderedController;
 
-        comboBox.getItems().addAll(positionsList);
+        comboBox.getItems().addAll(orderedController.getPositions());
         comboBox.setPromptText("posición");
         comboBox.setOnAction((event) -> actionCombo());
-        // add a listener
-        comboBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        oldValue = null;
 
-            // if the item of the list is changed
-            public void changed(ObservableValue ov, Number value, Number new_value)
-            {
-
-                // set the text for the label to the selected item
-                l1.setText(st[new_value.intValue()] + " selected");
-            }
-        });
-        hBox.getChildren().addAll( label, pane, comboBox);
+        hBox.getChildren().addAll(label, pane, comboBox);
         label.setMaxWidth(Double.MAX_VALUE);
         hBox.setHgrow(pane, Priority.ALWAYS);
         hBox.setSpacing(50);
@@ -44,7 +44,10 @@ public class OptionCell extends ListCell<GameOption> {
 
     @FXML
     public void actionCombo (){
-
+        String value = comboBox.getValue();
+        controller.processAnswer(value, oldValue, this.getItem());
+        controller.getSubmitButton().setVisible(true);
+        oldValue = value;
     }
 
     //@Override
@@ -52,10 +55,7 @@ public class OptionCell extends ListCell<GameOption> {
         super.updateItem(item, empty);
         setText(null);
         setGraphic(null);
-        if (empty || item == null){ //|| item.getText() == null) {
-            //setText(null);
-            //setGraphic(null);
-        } else {
+        if (!(empty || item == null)){ //|| item.getText() == null) {
             label.setText(item.getText());
             setGraphic(hBox);
         }

@@ -23,13 +23,13 @@ public class ScoreAugmenterPaneController {
     public void initialize(GameController gameController, Game game){
         controller = gameController;
         if (game.isAugmenterAvailable(new TwoMultiplier())){
-            augmenterx2.setVisible(true);
+            augmenterx2.setDisable(false);
         }
         if (game.isAugmenterAvailable(new ThreeMultiplier())){
-            augmenterx3.setVisible(true);
+            augmenterx3.setDisable(false);
         }
         if (game.isAugmenterAvailable(new ExclusivityMultiplier())){
-            exclusivity.setVisible(true);
+            exclusivity.setDisable(false);
         }
     }
 
