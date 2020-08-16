@@ -77,6 +77,7 @@ public class GameController {
         	currentQuestionController = SceneLoader.getCurrentSceneController();
         	currentQuestionController.initialize(this);
         	questionText.setText(getCurrentQuestion().getText());
+        	submitButton.setVisible(false);
         } catch (ViewLoadingException e) {
         	logger.error("View not loaded", e);
             SceneLoader.loadErrorPage();

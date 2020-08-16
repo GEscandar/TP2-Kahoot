@@ -1,33 +1,31 @@
 package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.model.GameOption;
-import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.layout.GridPane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.List;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
 
 public class OrderedChoiceQuestionController extends GenericQuestionController{
 
     @FXML
-    public GridPane gridPane;
+    public ListView<GameOption> listView;
 
     public void setUpView(){
-        List<CheckBox> buttonList = (List) gridPane.getChildren();
+        ObservableList<GameOption>optionsList = FXCollections.observableArrayList();
+        ObservableList<String>positionsList = FXCollections.observableArrayList();
 
-        int i = 0;
-        for (GameOption option : (gameController.getCurrentQuestion().getOptions())) {
-            CheckBox button = buttonList.get(i);
-            button.setText(option.getText());
-            button.setOnAction(this::addAnswer);
-            button.setVisible(true);
-            i++;
+        optionsList.addAll(gameController.getCurrentQuestion().getOptions());
+        for (int i = 1; i <= optionsList.size(); i++) {
+            positionsList.add(String.valueOf(i));
         }
-        while (i<6){
-            CheckBox unusedButton = buttonList.get(i);
-            unusedButton.setVisible(false);
-            i++;
-        }
+
+        listView.setEditable(true);
+        listView.setItems(optionsList);
+        listView.setCellFactory(param -> new OptionCell(positionsList));
     }
+
+
 }

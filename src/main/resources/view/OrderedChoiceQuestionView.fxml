@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.OrderedChoiceQuestionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.OrderedChoiceQuestionController">
    <children>
-      <GridPane fx:id="gridPane" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="155.0" prefWidth="390.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="41.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="43.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="44.0" valignment="CENTER" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" GridPane.columnIndex="1" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" GridPane.rowIndex="2" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
+      <ListView fx:id="listView" layoutX="20.0" layoutY="25.0" prefHeight="200.0" prefWidth="400.0" />
    </children>
 </AnchorPane>
