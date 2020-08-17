@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OptionGroup extends GameOption{
 	
-	List<GameOption> options = new ArrayList<>();
+	List<GameOption> options;
 	
 	public OptionGroup(String text) {
 		super(text);
@@ -22,6 +22,18 @@ public class OptionGroup extends GameOption{
 	
 	public void addOptions(GameOption ... option){
 		options.addAll(Arrays.asList(option));
+	}
+
+	public void addOption(GameOption option){
+		options.add(option);
+	}
+
+	public void removeOptions(GameOption ... option){
+		options.removeAll(Arrays.asList(option));
+	}
+
+	public void removeOption(GameOption option){
+		options.remove(option);
 	}
 
 	@Override
