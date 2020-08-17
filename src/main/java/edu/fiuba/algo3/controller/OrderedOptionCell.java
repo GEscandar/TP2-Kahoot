@@ -10,10 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 
-import java.util.Collections;
-import java.util.List;
 
-public class OptionCell extends ListCell<GameOption> {
+public class OrderedOptionCell extends ListCell<GameOption> {
 
     HBox hBox;
     Pane pane;
@@ -22,12 +20,12 @@ public class OptionCell extends ListCell<GameOption> {
     OrderedChoiceQuestionController controller;
     String oldValue;
 
-    public OptionCell(OrderedChoiceQuestionController orderedController) {
+    public OrderedOptionCell(OrderedChoiceQuestionController orderedController) {
         super();
         hBox = new HBox();
         pane = new Pane();
         label = new Label();
-        comboBox = new ComboBox();
+        comboBox = new ComboBox<>();
         controller = orderedController;
 
         comboBox.getItems().addAll(orderedController.getPositions());

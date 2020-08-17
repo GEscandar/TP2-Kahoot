@@ -31,7 +31,7 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 
         listView.setEditable(true);
         listView.setItems(optionsList);
-        listView.setCellFactory(param -> new OptionCell(this));
+        listView.setCellFactory(param -> new OrderedOptionCell(this));
     }
 
     public List<String> getPositions(){
@@ -40,12 +40,12 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 
     public void processAnswer(String newValue, String oldValue, GameOption option){
         if(oldValue != null){
-            List list = (hashAnswers.get(oldValue));
+            List<GameOption> list = (hashAnswers.get(oldValue));
             list.remove(option);
         }
 
         if (hashAnswers.containsKey(newValue)){
-            List list = (hashAnswers.get(newValue));
+            List<GameOption> list = (hashAnswers.get(newValue));
             list.add(option);
         }else{
             List<GameOption> list = new ArrayList<>();
