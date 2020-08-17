@@ -4,62 +4,34 @@ actor User
 title Diagrama Secuencia TP2 - Jugador contesta una pregunta con augmenter
 hide footbox
 
+participant ": Game" as game
 participant "player : Player" as player
-participant "score : Score" as score
-participant "multiplierX2 : TwoMultiplier" as multiplierx2
+participant ": Question" as question
+participant "matchScore : Score" as score
+participant "augmenter : ScoreAugmenter" as augmenter
 
-loop n players
-User -> player ** : new Player("Jugador1")
-player --> User : player
-end loop
 
-loop n questions 
-loop n options 
-User -> option ** : new GameOption(optionText)
-option --> User : option
-end loop
-User -> question ** : new Question(stringText, listaOpciones)
-question --> User : question
-User -> question : setCorrectOptions(opcionesCorrectas)
-end loop
-
-User -> game ** : new Game(jugadores, preguntas)
-game --> User : game
-User -> game : start()
+User -> game:1.nextTurn\n(selectedOptions, augmenter)
 activate game
-
-loop for n players
-User -> game : nextTurn(selectedOption, multiplierx2)
-activate game
-
-game -> score** : new Score(points, multiplierx2)
-score --> game : matchScore
-
-game -> matchResult** : new matchResult\n(currentPlr, matchScore)
-matchResult --> game : matchResults.add()
-
-game -> ScoreCalculator : calculateRoundEndResults(matchResults)
-deactivate game
-activate ScoreCalculator
-ScoreCalculator -> ScoreCalculator : calculateAugmenters\n(matchResult)
-activate ScoreCalculator
-ScoreCalculator -> matchResult : applyScoreAugmenter\n(matchResults)
-activate matchResult
-matchResult -> multiplierx2 : applyScoreAugmenter\n(matchScore, result.getMatchScore()) 
-activate multiplierx2
-multiplierx2 -> score : setValue(score.getValue() * 2)
-deactivate multiplierx2
-deactivate matchResult
-deactivate ScoreCalculator
-ScoreCalculator -> ScoreCalculator : sumMatchScore\n(MatchResults)
-activate ScoreCalculator
-ScoreCalculator -> matchResult : sumMatchScoreToPlayer\n(matchScore)
-activate matchResult
-matchResult -> player : sumScore(matchScore)
-deactivate matchResult
-deactivate ScoreCalculator
-end loop
-deactivate ScoreCalculator
-deactivate game
+game->>question:1.1.calculatePoints\n(selectedOptions, augmenter)
+activate question
+question ->> augmenter:isForPenalty()
+activate augmenter
+augmenter -->> question:false
+deactivate augmenter
+question ->> score:new Score(augmenter)
+activate score
+score -->> question:score
+deactivate score
+question -->>game:reply.score
+deactivate question
+game->>MatchResult:2.new
+activate MatchResult
+MatchResult->>player:2.1.getAugmenter
+activate player
+player-->>MatchResult:reply.augmenter
+deactivate player
+MatchResult-->>game:reply.matchResults.add\n(matchResult)
+deactivate MatchResult
 
 @enduml
