@@ -168,6 +168,16 @@
 	},{
 		"text":"Agrupe los elementos",
 		"type":"GROUP_CHOICE",
+		"groupList":[
+			{
+				"id":5,
+				"text":"Pares"
+			},
+			{
+				"id":6,
+				"text":"Impares"
+			}
+		],
 		"options":[
 					{
 						"id":1,
@@ -187,25 +197,33 @@
 					],
 		"correctOptions":[
 						{
-							"id":2,
-							"text":"2",
-							"optionGroup":{"text":"Pares"}
+							"id":5,
+							"text":"Pares",
+							"options":[
+								{
+									"id":2,
+									"text":"2"
+								},
+								{
+									"id":4,
+									"text":"4"
+								}
+							]
 						},
 						{
-							"id":4,
-							"text":"4",
-							"optionGroup":{"text":"Pares"}
-						},
-{
-							"id":1,
-							"text":"1",
-							"optionGroup":{"text":"Impares"}
-						},
-						{
-							"id":3,
-							"text":"3",
-							"optionGroup":{"text":"Impares"}
-						}							
+							"id":6,
+							"text":"Impares",
+							"options":[
+								{
+									"id":1,
+									"text":"1"
+								},
+								{
+									"id":3,
+									"text":"3"
+								}
+							]
+						}								
 					]
 	}
 	
