@@ -1,0 +1,71 @@
+@startuml
+
+actor User
+title Diagrama Secuencia TP2 - jugadores contestan preguntas y se elige a un ganador Sequence
+hide footbox
+
+participant " : Game" as game
+participant ": Question" as question
+participant MatchResult
+participant ": Player" as player
+participant ScoreCalculator
+participant ": MatchResult " as matchResult
+participant ": ScoreAugmenter" as scoreAugmenter
+
+loop Por cada jugador
+activate User
+User -> game:1.nextTurn\n(selectedOptions, augmenter)
+activate game
+game->>question:1.1.calculatePoints
+activate question
+question -->>game:reply.score
+deactivate question
+game->>MatchResult:2.new
+activate MatchResult
+MatchResult->>player:2.1.getAugmenter
+activate player
+player-->>MatchResult:reply.augmenter
+deactivate player
+MatchResult-->>game:reply.matchResults.add\n(matchResult)
+deactivate MatchResult
+
+end loop
+
+alt Si es fin de turno
+game->>ScoreCalculator:3.calculateRoundEndResults
+loop Por cada MatchResult
+activate ScoreCalculator
+
+ScoreCalculator->>matchResult:3.1.applyScoreAugmenter
+activate matchResult
+loop Por cada MatchResut
+matchResult->>scoreAugmenter:3.1.1.applyScoreAugmenter
+activate scoreAugmenter
+deactivate scoreAugmenter
+end loop
+deactivate matchResult
+deactivate ScoreCalculator
+end loop
+game->>game:4.newRound
+activate game
+loop Por cada Match Result
+ScoreCalculator->>matchResult:5.sumMatchScoreToPlayer
+activate ScoreCalculator
+activate matchResult
+deactivate matchResult
+deactivate game
+deactivate ScoreCalculator
+end loop
+deactivate game
+end alt
+
+alt Si no hay \nmás preguntas
+activate User
+User->>game:6.getWinner
+activate game
+game-->>User:reply.player
+deactivate game
+deactivate User
+end alt
+
+@enduml
