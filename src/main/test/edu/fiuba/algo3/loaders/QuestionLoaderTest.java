@@ -4,6 +4,7 @@ package edu.fiuba.algo3.loaders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import edu.fiuba.algo3.constants.QuestionType;
 import edu.fiuba.algo3.constants.ResourceConstants;
+import edu.fiuba.algo3.engine.questions.GroupChoiceQuestion;
 import edu.fiuba.algo3.exceptions.QuestionsNotLoadedException;
 import edu.fiuba.algo3.model.Question;
 
@@ -51,11 +53,17 @@ public class QuestionLoaderTest {
 	public void cargarListaDePreguntasYComprobarQueHayaCargadoTodosSusValoresTest() {
 		try {
 			List<Question> lista = QuestionLoader.loadQuestions(ResourceConstants.QUESTIONS_TEST_PATH);
-			Question question = lista.get(0);
-			assertNotNull(question.getCorrectOptions());
-			assertNotNull(question.getOptions());
-			assertNotNull(question.getText());
-			assertNotNull(question.getType());
+			for(Question question : lista) {
+				assertNotNull(question.getCorrectOptions());
+				assertNotNull(question.getOptions());
+				assertNotNull(question.getText());
+				assertNotNull(question.getType());	
+				if(question instanceof GroupChoiceQuestion) {
+					GroupChoiceQuestion groupQuestion = (GroupChoiceQuestion) question;
+					assertNotNull(groupQuestion.getOptionGroupList());
+					assertTrue(!groupQuestion.getOptionGroupList().isEmpty());
+				}
+			}
 		} catch (Exception ex) {
 			logger.error("Pregunta no cargada", ex);
 			fail();
@@ -68,5 +76,4 @@ public class QuestionLoaderTest {
 			QuestionLoader.loadQuestions("");
 		});
 	}
-
 }
