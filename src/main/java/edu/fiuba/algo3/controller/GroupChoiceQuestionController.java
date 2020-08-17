@@ -23,7 +23,7 @@ public class GroupChoiceQuestionController extends GenericQuestionController{
 	public void changeAnswer(Event event) {
 		if(allOptionsHaveAGroup()) {
 			updateGroups();
-			gameController.submitButton.setVisible(true);
+			gameController.submitButton.setDisable(false);
 		}
 	}
 

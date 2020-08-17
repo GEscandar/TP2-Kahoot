@@ -5,28 +5,28 @@
 		"options":[
 					{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}
 					
 					],
 		"correctOptions":[
 						{
 							"id":2,
-							"text":"2"
+							"text":"Dos"
 						},
 						{
 							"id":4,
-							"text":"4"
+							"text":"Cuatro"
 						}		
 					]
 	},{
@@ -35,28 +35,28 @@
 		"options":[
 					{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}
 					
 					],
 		"correctOptions":[
 						{
 							"id":2,
-							"text":"2"
+							"text":"Dos"
 						},
 						{
 							"id":4,
-							"text":"4"
+							"text":"Cuatro"
 						}		
 					]
 	},{
@@ -65,28 +65,28 @@
 		"options":[
 					{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}
 					
 					],
 		"correctOptions":[
 						{
 							"id":2,
-							"text":"2"
+							"text":"Dos"
 						},
 						{
 							"id":4,
-							"text":"4"
+							"text":"Cuatro"
 						}		
 					]
 	},{
@@ -95,34 +95,34 @@
 		"options":[
 					{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}
 					
 					],
 		"correctOptions":[
 						{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}	
 					]
 	},{
@@ -181,17 +181,17 @@
 		"options":[
 					{
 						"id":1,
-						"text":"1"
+						"text":"Uno"
 					},
 					{
 						"id":2,
-						"text":"2"
+						"text":"Dos"
 					},{
 						"id":3,
-						"text":"3"						
+						"text":"Tres"						
 					},{
 						"id":4,
-						"text":"4"
+						"text":"Cuatro"
 					}
 					
 					],
@@ -202,11 +202,11 @@
 							"options":[
 								{
 									"id":2,
-									"text":"2"
+									"text":"Dos"
 								},
 								{
 									"id":4,
-									"text":"4"
+									"text":"Cuatro"
 								}
 							]
 						},
@@ -216,11 +216,11 @@
 							"options":[
 								{
 									"id":1,
-									"text":"1"
+									"text":"Uno"
 								},
 								{
 									"id":3,
-									"text":"3"
+									"text":"Tres"
 								}
 							]
 						}								

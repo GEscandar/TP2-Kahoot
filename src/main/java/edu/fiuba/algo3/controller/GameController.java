@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.constants.AugmenterType;
+import edu.fiuba.algo3.constants.QuestionTypeLiteral;
 import edu.fiuba.algo3.constants.Views;
 import edu.fiuba.algo3.exceptions.ViewLoadingException;
 import edu.fiuba.algo3.loaders.SceneLoader;
@@ -26,6 +27,8 @@ public class GameController {
 	@FXML
 	public Label questionText;
 	@FXML
+	public Label questionType;
+	@FXML
 	public Pane questionPane;
 	@FXML
 	public Pane playerPane;
@@ -44,8 +47,6 @@ public class GameController {
 
 	public void addAugmenter(MouseEvent event) {
 		RadioButton source = (RadioButton) event.getSource();
-
-		// augmenterString = source.getText();
 		augmenterString = source.getId();
 	}
 
@@ -76,7 +77,8 @@ public class GameController {
 			currentQuestionController = SceneLoader.getCurrentSceneController();
 			currentQuestionController.initialize(this);
 			questionText.setText(getCurrentQuestion().getText());
-			submitButton.setVisible(false);
+			questionType.setText(getQuestionTypeLiteralString());
+			submitButton.setDisable(true);
 		} catch (ViewLoadingException e) {
 			logger.error("View not loaded", e);
 			SceneLoader.loadErrorPage();
@@ -112,7 +114,7 @@ public class GameController {
 		AugmenterType augmenterType = AugmenterType.getEnumByName(augmenterString);
 		game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterType.getScoreAugmenter());
 		updatePanes();
-		submitButton.setVisible(false);
+		submitButton.setDisable(true);
 		if (game.isOver())
 			endGame();
 	}
@@ -131,5 +133,26 @@ public class GameController {
 
 		ResultsViewController controller = SceneLoader.getCurrentSceneController();
 		controller.initialize(game);
+	}
+	
+	private String getQuestionTypeLiteralString() {
+		switch(getCurrentQuestion().getType()) {
+			case MULTIPLE_CHOICE:  
+				return QuestionTypeLiteral.MULTIPLE_CHOICE;
+			case MULTIPLE_CHOICE_WITH_PENALTY:
+				return QuestionTypeLiteral.MULTIPLE_CHOICE_PENALTY;
+			case MULTIPLE_CHOICE_PARTIAL:
+				return QuestionTypeLiteral.MULTIPLE_CHOICE_PARTIAL;
+			case TRUE_FALSE:
+				return QuestionTypeLiteral.TRUE_FALSE;
+			case TRUE_FALSE_WITH_PENALTY:
+				return QuestionTypeLiteral.TRUE_FALSE_PENALTY;
+			case ORDERED_QUESTION:
+				return QuestionTypeLiteral.ORDERED_CHOICE;
+			case GROUP_CHOICE:
+				return QuestionTypeLiteral.GROUP_CHOICE;
+			default:
+				return "";
+		}
 	}
 }

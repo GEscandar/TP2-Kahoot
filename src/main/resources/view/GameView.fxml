@@ -27,7 +27,7 @@
                   </Pane>
                </children>
                <HBox.margin>
-                  <Insets />
+                  <Insets right="50.0" />
                </HBox.margin>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -39,6 +39,11 @@
                               <Font name="System Bold" size="25.0" />
                            </font>
                         </Label>
+                        <Label fx:id="questionType" textFill="#ef4649">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -46,12 +51,12 @@
                   </Pane>
                   <Pane fx:id="questionPane" prefHeight="250.0" prefWidth="440.0">
                      <VBox.margin>
-                        <Insets top="100.0" />
+                        <Insets top="60.0" />
                      </VBox.margin>
                   </Pane>
                </children>
                <HBox.margin>
-                  <Insets right="370.0" />
+                  <Insets right="450.0" />
                </HBox.margin>
             </VBox>
          </children>
@@ -59,7 +64,7 @@
             <Insets bottom="20.0" top="70.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#doNext" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #EF4649;" text="Siguiente" textFill="WHITE" visible="false" VBox.vgrow="ALWAYS">
+      <Button fx:id="submitButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#doNext" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #EF4649;" text="Siguiente" textFill="WHITE" visible="true" VBox.vgrow="ALWAYS">
          <styleClass>
             <String fx:value="textControl" />
             <String fx:value="nextButton" />

@@ -29,6 +29,6 @@ public class TrueFalseQuestionController extends GenericQuestionController {
         GameOption option = new GameOption(source.getText());
 
         selectedAnswers.add(option);
-        gameController.submitButton.setVisible(true);
+        gameController.submitButton.setDisable(false);
     }
 }

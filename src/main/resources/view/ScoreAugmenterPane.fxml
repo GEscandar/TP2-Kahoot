@@ -16,9 +16,9 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Triplicar" toggleGroup="$Augmenters" />
-            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad">
+            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Exclusividad">
                <VBox.margin>
-                  <Insets left="22.0" />
+                  <Insets />
                </VBox.margin></RadioButton>
          </children>
       </VBox>
