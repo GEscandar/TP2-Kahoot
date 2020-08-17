@@ -80,10 +80,8 @@ public class GroupChoiceTest {
 		GroupChoiceQuestion question = new GroupChoiceQuestion("Agrupar las opciones según corresponda.", listaOpciones, Arrays.asList(grupoPares, grupoImpares));
 
 		List<GameOption> listaOpcionesCorrectas = new ArrayList<GameOption>();
-		listaOpcionesCorrectas.add(opcionUno);
-		listaOpcionesCorrectas.add(opcionDos);
-		listaOpcionesCorrectas.add(opcionTres);
-		listaOpcionesCorrectas.add(opcionCuatro);
+		listaOpcionesCorrectas.add(grupoPares);
+		listaOpcionesCorrectas.add(grupoImpares);
 		
 		question.setCorrectOptions(listaOpcionesCorrectas);
 		
@@ -114,10 +112,8 @@ public class GroupChoiceTest {
 		GroupChoiceQuestion question = new GroupChoiceQuestion("Agrupar las opciones según corresponda.", listaOpciones, Arrays.asList(grupoPares, grupoImpares));
 
 		List<GameOption> listaOpcionesCorrectas = new ArrayList<GameOption>();
-		listaOpcionesCorrectas.add(opcionUno);
-		listaOpcionesCorrectas.add(opcionDos);
-		listaOpcionesCorrectas.add(opcionTres);
-		listaOpcionesCorrectas.add(opcionCuatro);
+		listaOpcionesCorrectas.add(grupoPares);
+		listaOpcionesCorrectas.add(grupoImpares);
 		
 		question.setCorrectOptions(listaOpcionesCorrectas);
 		
