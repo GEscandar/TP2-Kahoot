@@ -1,0 +1,41 @@
+@startuml
+
+actor User
+title Diagrama Secuencia TP2 - Calculo de puntos con exclusividad para 2 jugadores
+hide footbox
+
+participant " : Game" as game
+participant ScoreCalculator
+participant "matchResult1 :" as matchResult1
+participant "matchResult2 :" as matchResult2
+participant "noMultiplier : " as noMultiplier
+participant "exclusivity : " as exclusivity
+participant "matchScore : score" as score
+
+User ->> game:nextTurn
+activate game 
+game->>ScoreCalculator:3.calculateRoundEndResults
+activate ScoreCalculator
+
+ScoreCalculator->>matchResult1:3.1.applyScoreAugmenter
+activate matchResult1
+alt score > opponent score
+matchResult1->>exclusivity:3.1.1.applyScoreAugmenter\n(Score questionScore, Score opQuestionScore)
+activate exclusivity
+exclusivity ->> score:setValue\n(score.getValue() * 2)
+activate score
+deactivate score
+deactivate exclusivity
+deactivate matchResult1
+end alt
+
+ScoreCalculator->>matchResult2:3.1.applyScoreAugmenter
+activate matchResult2
+matchResult2->>noMultiplier:3.1.1.applyScoreAugmenter
+activate noMultiplier
+deactivate noMultiplier
+deactivate matchResult2
+deactivate ScoreCalculator
+deactivate game
+
+@enduml

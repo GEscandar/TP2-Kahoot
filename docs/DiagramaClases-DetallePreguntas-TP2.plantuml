@@ -15,39 +15,39 @@ abstract Question{
 }
 
 class TrueFalseQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     + setCorrectOption(GameOption option)
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class TrueFalseWithPenaltyQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     + setCorrectOption(GameOption option)
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class OrderedChoiceQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class MultipleChoiceQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class MultipleChoiceWithPenaltyQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     + hasPenalty() : Boolean
     + getType() : QuestionType
 }
 
 class GroupChoiceQuestion{
-    + calculatePoints(options :List<GameOption) : int
+    + calculatePoints(options, augmenter) : int
     - groupList :  List<OptionGroup>
     + hasPenalty() : Boolean
     + getOptionGroupList() : List<OptionGroup> 
