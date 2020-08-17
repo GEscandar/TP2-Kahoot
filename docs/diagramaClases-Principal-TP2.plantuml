@@ -34,7 +34,7 @@ class MatchResult{
 
 class Score{
     + value : int
-    + augmenter
+    + augmenter : ScoreAugmenter
     + sum(Score score)
     + biggerThan(Score score) : boolean
     + equals(Object obj) : Boolean

@@ -1,44 +1,42 @@
 @startuml
 
 actor User
-title Diagrama Secuencia TP2 - Jugador contesta una pregunta
+title Diagrama Secuencia TP2 - Jugador contesta una pregunta con augmenter equivocado
 hide footbox
 
 participant ": Game" as game
 participant "player : Player" as player
 participant ": Question" as question
 participant "matchScore : Score" as score
-participant "augmenter : NoMultiplier" as augmenter
+participant "augmenter : ScoreAugmenter" as augmenter
+participant "augmenter : NoMultiplier" as noAugmenter
 
 
-User -> game:1.nextTurn\n(selectedOptions)
+User -> game:1.nextTurn\n(selectedOptions, augmenter)
 activate game
-game ->> augmenter:new
-activate augmenter
-augmenter -->> game:augmenter
-deactivate augmenter
-game-> game:2.nextTurn\n(selectedOptions, augmenter)
-activate game
-game->>question:2.1.calculatePoints\n(selectedOptions, augmenter)
+game->>question:1.1.calculatePoints\n(selectedOptions, augmenter)
 activate question
 question ->> augmenter:isForPenalty()
 activate augmenter
 augmenter -->> question:false
 deactivate augmenter
+question ->> noAugmenter**:new
+activate noAugmenter
+noAugmenter -->> question:augmenter
+deactivate noAugmenter
 question ->> score:new Score(augmenter)
 activate score
 score -->> question:score
 deactivate score
 question -->>game:reply.score
 deactivate question
-game->>MatchResult:3.new
+game->>MatchResult:2.new
 activate MatchResult
-MatchResult->>player:3.1.getAugmenter
+MatchResult->>player:2.1.getAugmenter
 activate player
 player-->>MatchResult:reply.augmenter
 deactivate player
 MatchResult-->>game:reply.matchResults.add\n(matchResult)
 deactivate MatchResult
-deactivate game
-deactivate game
+
 @enduml
