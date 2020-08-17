@@ -28,7 +28,9 @@ public abstract class GenericQuestionController {
 		GameOption option = new GameOption(source.getText());
 		selectedAnswers.remove(option);
 		source.setOnAction((e) -> addAnswer(event));
-
+		if(selectedAnswers.isEmpty()) {
+			gameController.submitButton.setVisible(false);
+		}
 	}
 
 	public List<GameOption> getSelectedAnswers() {
@@ -38,6 +40,7 @@ public abstract class GenericQuestionController {
 	public void initialize(GameController controller) {
 		selectedAnswers = new ArrayList<>();
 		this.gameController = controller;
+		gameController.submitButton.setVisible(false);
 
 		setUpView();
 	}

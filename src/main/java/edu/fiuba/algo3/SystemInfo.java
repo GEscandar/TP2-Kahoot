@@ -1,8 +1,5 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SystemInfo {
     public static String title() {
         return "TP2 KAHOOT";
