@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.model.GameOption;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.*;
@@ -17,6 +16,8 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 	@FXML
     public VBox vBox;
 	
+	public int optionsRequired = 0;
+	
 	@Override
 	public void addAnswer(ActionEvent event) {
 		CheckBox source = (CheckBox) event.getSource();		
@@ -25,7 +26,7 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 		selectedAnswers.add(option);
 		updateIndex();	
 		source.setOnAction((e) -> undoAnswer(event));
-		gameController.submitButton.setVisible(true);
+		checkNextButton();
 	}
 
 	@Override
@@ -36,16 +37,14 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 		selectedAnswers.remove(option);
 		updateIndex();
 		source.setOnAction((e) -> addAnswer(event));
-		if(selectedAnswers.isEmpty()) {
-			gameController.submitButton.setVisible(false);
-		}
+		checkNextButton();
 	}
 	
 	private void updateIndex() {
-		List<SplitPane> paneList = (List) vBox.getChildren();
-		for(SplitPane pane : paneList) {
+		List<HBox> paneList = (List) vBox.getChildren();
+		for(HBox pane : paneList) {
 			if(pane.isVisible()) {
-				List<AnchorPane> anchorPaneList = (List) pane.getItems();
+				List<AnchorPane> anchorPaneList = (List) pane.getChildren();
 				Label label = (Label) anchorPaneList.get(0).getChildren().get(0);
 				CheckBox button = (CheckBox) anchorPaneList.get(1).getChildren().get(0);
 				GameOption option = new GameOption(button.getText());
@@ -58,20 +57,26 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 			}
 		}
 	}
+	
+	private void checkNextButton() {
+		boolean enableButton = selectedAnswers.size() == optionsRequired;
+		gameController.submitButton.setVisible(enableButton);
+	}
 
     public void setUpView(){
-        List<SplitPane> paneList = (List) vBox.getChildren();
+        List<HBox> paneList = (List) vBox.getChildren();
 
         int i = 0;
         for (GameOption option : (gameController.getCurrentQuestion().getOptions())) {
-        	SplitPane pane = paneList.get(i);
-        	List<AnchorPane> anchorPane  = (List) pane.getItems();
+        	HBox pane = paneList.get(i);
+        	List<AnchorPane> anchorPane  = (List) pane.getChildren();
         	CheckBox button =  (CheckBox) ((List) anchorPane.get(1).getChildren()).get(0);
             button.setText(option.getText());
             button.setOnAction(this::addAnswer);
             pane.setVisible(true);
             i++;
         }
+        optionsRequired = i;
     }
 
 }
