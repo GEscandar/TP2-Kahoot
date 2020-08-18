@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
@@ -9,13 +10,16 @@
    <children>
       <VBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X2">
+            <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" alignment="CENTER_LEFT" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Duplicar">
                <toggleGroup>
                   <ToggleGroup fx:id="Augmenters" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Multiplicador X3" toggleGroup="$Augmenters" />
-            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad" />
+            <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Triplicar" toggleGroup="$Augmenters" />
+            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad">
+               <VBox.margin>
+                  <Insets left="22.0" />
+               </VBox.margin></RadioButton>
          </children>
       </VBox>
    </children>

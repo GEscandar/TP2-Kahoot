@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" stylesheets="@../styles/questions.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.GameController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/questions.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.GameController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="507.0" prefWidth="800.0">
          <children>
             <VBox alignment="CENTER" prefHeight="225.0" prefWidth="200.0">
                <children>
@@ -47,7 +46,7 @@
                   </Pane>
                   <Pane fx:id="questionPane" prefHeight="250.0" prefWidth="440.0">
                      <VBox.margin>
-                        <Insets top="50.0" />
+                        <Insets top="100.0" />
                      </VBox.margin>
                   </Pane>
                </children>
@@ -57,7 +56,7 @@
             </VBox>
          </children>
          <VBox.margin>
-            <Insets bottom="100.0" />
+            <Insets bottom="20.0" top="100.0" />
          </VBox.margin>
       </HBox>
       <Button fx:id="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#doNext" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #EF4649;" text="Siguiente" textFill="WHITE" visible="false" VBox.vgrow="ALWAYS">
@@ -69,7 +68,7 @@
             <Font size="20.0" />
          </font>
          <VBox.margin>
-            <Insets top="40.0" />
+            <Insets bottom="20.0" top="30.0" />
          </VBox.margin>
       </Button>
    </children>

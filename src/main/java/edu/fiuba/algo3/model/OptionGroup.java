@@ -35,6 +35,13 @@ public class OptionGroup extends GameOption{
 	public void removeOption(GameOption option){
 		options.remove(option);
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return text;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

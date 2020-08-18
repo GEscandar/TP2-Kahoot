@@ -23,15 +23,22 @@
 	-fx-font-family: "Berlin Sans FB Demi Bold";
 }
 
-.stylishLabel{
-	-fx-pref-width: 58;
-	-fx-pref-height: 55;
+.radio-button{
 	-fx-padding: 8 9 8 9;
 	-fx-background-radius: 30;
 	-fx-background-color: rgba(235, 21, 35, 0.76);
-	-fx-font-size: 33px;
+	-fx-font-size: 15px;
 	-fx-text-fill: white;
 	-fx-alignment: center;
 	-fx-font-family: "Berlin Sans FB Demi Bold";
 }
 
+.radio-button > .radio {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0px;
+  -fx-padding: 0.0em; /* 4 8 4 8 */
+}
+.radio-button:selected > .radio > .dot {
+  -fx-background-color: transparent;
+}

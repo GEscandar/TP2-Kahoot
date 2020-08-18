@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.GroupChoiceQuestionController">
    <children>
-      <ListView fx:id="listView" layoutX="20.0" layoutY="25.0" prefHeight="170.0" prefWidth="400.0" />
+      <VBox fx:id="vBox" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="440.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+              <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+              <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+              <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+              <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+              <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="Seleccionar" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </VBox>
    </children>
 </AnchorPane>

@@ -1,68 +1,82 @@
 package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.model.GameOption;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.util.*;
 
 
 public class OrderedChoiceQuestionController extends GenericQuestionController{
 
-    @FXML
-    public ListView<GameOption> listView;
+	@FXML
+    public VBox vBox;
+	
+	public int optionsRequired = 0;
+	
+	@Override
+	public void addAnswer(ActionEvent event) {
+		CheckBox source = (CheckBox) event.getSource();		
+		GameOption option = new GameOption(source.getText());
 
-    public ObservableList<GameOption>optionsList;
-    public ObservableList<String>positionsList;
-    public Map<String, List<GameOption>> hashAnswers;
+		selectedAnswers.add(option);
+		updateIndex();	
+		source.setOnAction((e) -> undoAnswer(event));
+		checkNextButton();
+	}
+
+	@Override
+	public void undoAnswer(ActionEvent event) {
+		CheckBox source = (CheckBox) event.getSource();		
+		
+		GameOption option = new GameOption(source.getText());
+		selectedAnswers.remove(option);
+		updateIndex();
+		source.setOnAction((e) -> addAnswer(event));
+		checkNextButton();
+	}
+	
+	private void updateIndex() {
+		List<HBox> paneList = (List) vBox.getChildren();
+		for(HBox pane : paneList) {
+			if(pane.isVisible()) {
+				List<AnchorPane> anchorPaneList = (List) pane.getChildren();
+				Label label = (Label) anchorPaneList.get(0).getChildren().get(0);
+				CheckBox button = (CheckBox) anchorPaneList.get(1).getChildren().get(0);
+				GameOption option = new GameOption(button.getText());
+				if(selectedAnswers.contains(option)) {
+					int index = selectedAnswers.indexOf(option);
+					label.setText(String.valueOf(index + 1) + "°");
+				}else {
+					label.setText("");
+				}
+			}
+		}
+	}
+	
+	private void checkNextButton() {
+		boolean enableButton = selectedAnswers.size() == optionsRequired;
+		gameController.submitButton.setVisible(enableButton);
+	}
 
     public void setUpView(){
-        optionsList = FXCollections.observableArrayList();
-        positionsList = FXCollections.observableArrayList();
-        optionsList.addAll(gameController.getCurrentQuestion().getOptions());
-        hashAnswers = new HashMap<>();
+        List<HBox> paneList = (List) vBox.getChildren();
 
-        for (int i = 1; i <= optionsList.size(); i++){
-            positionsList.add(String.valueOf(i));
+        int i = 0;
+        for (GameOption option : (gameController.getCurrentQuestion().getOptions())) {
+        	HBox pane = paneList.get(i);
+        	List<AnchorPane> anchorPane  = (List) pane.getChildren();
+        	CheckBox button =  (CheckBox) ((List) anchorPane.get(1).getChildren()).get(0);
+            button.setText(option.getText());
+            button.setOnAction(this::addAnswer);
+            pane.setVisible(true);
+            i++;
         }
-
-        listView.setEditable(true);
-        listView.setItems(optionsList);
-        listView.setCellFactory(param -> new OrderedOptionCell(this));
+        optionsRequired = i;
     }
 
-    public List<String> getPositions(){
-        return positionsList;
-    }
-
-    public void processAnswer(String newValue, String oldValue, GameOption option){
-        if(oldValue != null){
-            List<GameOption> list = (hashAnswers.get(oldValue));
-            list.remove(option);
-        }
-
-        if (hashAnswers.containsKey(newValue)){
-            List<GameOption> list = (hashAnswers.get(newValue));
-            list.add(option);
-        }else{
-            List<GameOption> list = new ArrayList<>();
-            list.add(option);
-            hashAnswers.put(newValue, list);
-        }
-
-        ArrayList<String> sortedKeys = new ArrayList<>(hashAnswers.keySet());
-
-        selectedAnswers.clear();
-        Collections.sort(sortedKeys);
-        for (String x : sortedKeys){
-            selectedAnswers.add(hashAnswers.get(x).get(0));
-        }
-    }
-
-    public Button getSubmitButton(){
-        return this.gameController.getSubmitButton();
-    }
 }
