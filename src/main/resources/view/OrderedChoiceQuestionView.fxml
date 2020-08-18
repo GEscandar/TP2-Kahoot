@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.OrderedChoiceQuestionController">
    <children>
-      <VBox fx:id="vBox" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="440.0" spacing="10.0">
+      <VBox id="ordered-choice" fx:id="vBox" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="440.0" spacing="10.0">
          <children>
             <HBox prefHeight="160.0" prefWidth="200.0" visible="false">
               <children>
