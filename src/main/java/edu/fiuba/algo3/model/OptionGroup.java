@@ -45,19 +45,18 @@ public class OptionGroup extends GameOption{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
+		if(!(obj instanceof OptionGroup)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		OptionGroup other = (OptionGroup) obj;
-		if (options == null) {
-			if (other.options != null)
-				return false;
-		} else if (!options.equals(other.options))
+		if(!text.equals(other.getText())) {
 			return false;
-		return true;
+		}
+		if(options.size() != other.getOptions().size()) {
+			return false;
+		}
+		
+		return options.containsAll(other.getOptions());
 	}
 	
 	

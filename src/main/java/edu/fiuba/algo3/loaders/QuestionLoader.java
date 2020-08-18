@@ -6,13 +6,17 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 import edu.fiuba.algo3.constants.QuestionType;
+import edu.fiuba.algo3.engine.questions.GroupChoiceQuestion;
 import edu.fiuba.algo3.exceptions.QuestionsNotLoadedException;
+import edu.fiuba.algo3.model.GameOption;
+import edu.fiuba.algo3.model.OptionGroup;
 import edu.fiuba.algo3.model.Question;
 import edu.fiuba.algo3.resources.ResourceLoader;
 
 public class QuestionLoader {
 	
 	private static final String TYPE = "type";
+	private static final String CORRECT_OPTIONS = "correctOptions";
 	private static final Gson gson = new Gson();
 	
 	private QuestionLoader() {}
@@ -34,14 +38,26 @@ public class QuestionLoader {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static List<Question> parseToList(List<Map<String, String>> list){
+	private static List<Question> parseToList(List<Map<String, Object>> list){
 		List<Question> questionList = new ArrayList<>();	
 		list.stream().forEach(element -> {
-			String type = element.get(TYPE);
+			String type = element.get(TYPE).toString();
 			Question question = (Question) gson.fromJson(gson.toJson(element), QuestionType.valueOf(type).getQuestionClass());
+			if(question instanceof GroupChoiceQuestion) {
+				loadGroupChoiceQuestion(element, (GroupChoiceQuestion) question);
+			}
 			questionList.add(question);
 		});
 		return questionList;
 	}	
+	
+	private static void loadGroupChoiceQuestion(Map<String, Object> element, GroupChoiceQuestion question) {
+		List correctOptionsList = (List) element.get(CORRECT_OPTIONS);
+		List<GameOption> groupList = new ArrayList<>();
+		for(Object correctOption : correctOptionsList) {
+			groupList.add(gson.fromJson(gson.toJson(correctOption), OptionGroup.class));
+		}
+		question.setCorrectOptions(groupList);
+	}
 
 }

@@ -18,7 +18,7 @@ public class GroupChoiceQuestion extends Question {
 
 	@Override
 	protected int calculatePoints(List<GameOption> selectedOptions) {
-		if(selectedOptions.equals(correctOptions)) {
+		if(correctOptions.size() == selectedOptions.size() && correctOptions.containsAll(selectedOptions)) {
 			return 1;
 		}
 		return 0;
@@ -37,4 +37,5 @@ public class GroupChoiceQuestion extends Question {
 	public QuestionType getType() {
 		return QuestionType.GROUP_CHOICE;
 	}
+	
 }
