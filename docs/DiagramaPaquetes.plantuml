@@ -1,0 +1,56 @@
+@startuml
+
+package "model" {
+    class Game
+    abstract Question
+    class Player
+    class Score
+}
+
+package "controller" {
+    class GameController
+    class PlayerNameController
+    abstract GenericQuestionController
+    class ResultsViewController
+}
+
+package "loaders" {
+    class GameLoader
+    class SceneLoader
+    class StylesheetLoader
+    class QuestionLoader
+}
+
+package "resources" {
+    package "view" {
+    }
+    folder "styles"{
+        class questions
+    }
+     folder "images"{
+    }
+    folder "questions.json"{
+    }
+}
+
+
+package "engine" {
+    folder "questions"{
+    }
+   
+    folder "augmenter"{
+        abstract ScoreAugmenter
+    }
+    class ScoreCalculator
+}
+
+view -> styles
+model --> engine
+controller --> view
+
+loaders --> resources
+
+model --> controller
+
+
+@enduml
