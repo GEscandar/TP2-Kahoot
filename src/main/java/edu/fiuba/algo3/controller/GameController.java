@@ -9,6 +9,7 @@ import edu.fiuba.algo3.model.Game;
 import edu.fiuba.algo3.model.Player;
 import edu.fiuba.algo3.model.Question;
 import edu.fiuba.algo3.resources.QuestionViewRouter;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,12 +23,17 @@ import org.slf4j.LoggerFactory;
 
 import static edu.fiuba.algo3.constants.Views.*;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class GameController {
 
 	@FXML
 	public Label questionText;
 	@FXML
 	public Label questionType;
+	@FXML
+	public Label timeCounter;
 	@FXML
 	public Pane questionPane;
 	@FXML
@@ -42,6 +48,8 @@ public class GameController {
 	private String augmenterString;
 	private GenericQuestionController currentQuestionController;
 	private ScoreAugmenterPaneController scoreAugmenterController;
+	private int interval = 30;
+	private Timer timer;
 
 	private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
@@ -56,6 +64,7 @@ public class GameController {
 
 		game.start();
 		updatePanes();
+		startTimeThread();
 	}
 
 	private void setPlayerPane() {
@@ -111,12 +120,16 @@ public class GameController {
 	}
 
 	public void doNext() {
+		resetTimer();
 		AugmenterType augmenterType = AugmenterType.getEnumByName(augmenterString);
 		game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterType.getScoreAugmenter());
 		updatePanes();
 		submitButton.setDisable(true);
-		if (game.isOver())
+		if (game.isOver()) {
 			endGame();
+		}else {
+			startTimeThread();
+		}
 	}
 
 	public Button getSubmitButton() {
@@ -133,6 +146,29 @@ public class GameController {
 
 		ResultsViewController controller = SceneLoader.getCurrentSceneController();
 		controller.initialize(game);
+	}
+	
+	private void resetTimer() {
+		timer.cancel();
+		timeCounter.setText("30");
+	}
+	
+	
+	private void startTimeThread() {
+		interval = 30;timer = new Timer();
+		
+	    timer.scheduleAtFixedRate(new TimerTask() {
+	        public void run() {
+                Platform.runLater(() -> {
+                	timeCounter.setText(String.valueOf(interval));
+                	if(interval == 0) {                		             
+                		doNext();
+                	}else {                		
+                		interval--;
+                	}
+                });         	
+	        }
+	    }, 1000,1000);
 	}
 	
 	private String getQuestionTypeLiteralString() {
