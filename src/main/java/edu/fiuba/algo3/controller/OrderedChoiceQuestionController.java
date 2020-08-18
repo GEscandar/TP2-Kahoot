@@ -59,8 +59,8 @@ public class OrderedChoiceQuestionController extends GenericQuestionController{
 	}
 	
 	private void checkNextButton() {
-		boolean enableButton = selectedAnswers.size() == optionsRequired;
-		gameController.submitButton.setVisible(enableButton);
+		boolean disableButton = selectedAnswers.size() != optionsRequired;
+		gameController.submitButton.setDisable(disableButton);
 	}
 
     public void setUpView(){

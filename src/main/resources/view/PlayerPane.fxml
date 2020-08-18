@@ -10,9 +10,19 @@
    <children>
       <VBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="200.0" spacing="15.0">
          <children>
+            <Label text="Jugador">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+               </font>
+            </Label>
             <Label fx:id="playerName" text="Name">
                <font>
                   <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label text="Puntaje">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="12.0" />
                </font>
             </Label>
             <Label fx:id="playerScore" text="Score">

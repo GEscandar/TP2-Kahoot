@@ -20,7 +20,7 @@ public abstract class GenericQuestionController {
 
 		selectedAnswers.add(option);
 		source.setOnAction((e) -> undoAnswer(event));
-		gameController.submitButton.setVisible(true);
+		gameController.submitButton.setDisable(false);
 	}
 
 	public void undoAnswer(ActionEvent event) {
@@ -29,7 +29,7 @@ public abstract class GenericQuestionController {
 		selectedAnswers.remove(option);
 		source.setOnAction((e) -> addAnswer(event));
 		if(selectedAnswers.isEmpty()) {
-			gameController.submitButton.setVisible(false);
+			gameController.submitButton.setDisable(true);
 		}
 	}
 
@@ -40,7 +40,7 @@ public abstract class GenericQuestionController {
 	public void initialize(GameController controller) {
 		selectedAnswers = new ArrayList<>();
 		this.gameController = controller;
-		gameController.submitButton.setVisible(false);
+		gameController.submitButton.setDisable(true);
 
 		setUpView();
 	}

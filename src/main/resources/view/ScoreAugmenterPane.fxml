@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controller.ScoreAugmenterPaneController">
    <children>
       <VBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0" spacing="20.0">
          <children>
+            <Label text="Multiplicadores">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+               </font>
+            </Label>
             <RadioButton id="MULTIPLY_PER_TWO" fx:id="augmenterx2" alignment="CENTER_LEFT" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Duplicar">
                <toggleGroup>
                   <ToggleGroup fx:id="Augmenters" />
                </toggleGroup>
             </RadioButton>
             <RadioButton id="MULTIPLY_PER_THREE" fx:id="augmenterx3" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Triplicar" toggleGroup="$Augmenters" />
-            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" prefHeight="18.0" prefWidth="130.0" text="Exclusividad">
+            <RadioButton id="EXCLUSIVITY" fx:id="exclusivity" disable="true" mnemonicParsing="false" onMouseClicked="#addAugmenter" text="Exclusividad">
                <VBox.margin>
-                  <Insets left="22.0" />
+                  <Insets />
                </VBox.margin></RadioButton>
          </children>
       </VBox>
