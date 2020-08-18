@@ -1,0 +1,19 @@
+@startuml
+
+[*] --> CargaJugadores : start Game
+
+CargaJugadores : Se ingresa por pantalla\n los jugadores
+TurnoJugador1 : Contesta pregunta
+TurnoJugador2 : Contesta pregunta
+
+CargaJugadores --> CargaJugadores : carga 2o. jugador
+
+CargaJugadores --> TurnoJugador1 : arranca el juego
+
+TurnoJugador1 --right> TurnoJugador2 : fin de turno
+TurnoJugador2 --left> TurnoJugador1 : fin de turno
+
+TurnoJugador2 --down> [*] : No hay más preguntas
+
+@enduml
+
