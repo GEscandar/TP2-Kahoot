@@ -50,28 +50,30 @@ Se deberá ejecutar el siguiente comando dentro del directorio del proyecto:
 
 Diagrama de clases principal del proyecto:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/actualizacion-diagramas-entrega3/docs/out/diagramaClases-Principal-TP2/DiagramaUML-Clases-TP2.png">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasClase/DiagramaUML-Clases-TP2.png?raw=true">
 
 Para la clase abstracta ScoreAugmenter, se creó un diagrama de clases en detalle:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaClases-DetalleAugmentation/DiagramaUML-DetalleAugmentation-TP2.png">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasClase/DiagramaUML-DetalleAugmentation-TP2.png?raw=true">
 
 Lo mismo para el detalle de la clase abstracta Question:
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaClases-DetallePreguntas-TP2/DiagramaUML-DetallePreguntas-TP2.png">
-
-Diagrama de Secuencia para calculo de puntaje a un jugador:
-
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-ConestarPregunta/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta.png">
-
-Ya para el caso del jugador que aplica un multiplicador o exclusividad: 
-
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-ConestarPreguntaconAugmenter/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasClase/DiagramaUML-DetallePreguntas-TP2.png?raw=true">
 
 Diagrama de secuencia del flujo normal del juego (una vez el juego fue inicializado con los jugadores y las preguntas): 
 
-<img src="https://raw.githubusercontent.com/GEscandar/TP2-Kahoot/master/docs/out/DiagramaSecuencia-FlujoJuego/DiagramaSecuencia-FlujoJuego.jpg">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20jugadores%20contestan%20preguntas%20y%20se%20elige%20a%20un%20ganador%20Sequence.png?raw=true">
 
+Diagrama de Secuencia para jugador contestando una pregunta usando un Augmenter:
+
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png?raw=true">
+
+Diagrama de Secuencia para calculo de puntaje para dos jugadores cuando uno usa exclusividad y el otro no: 
+
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20Calculo%20de%20puntos%20con%20exclusividad%20para%202%20jugadores.png?raw=true">
+
+Diagrama de Paquetes general del programa:
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/DiagramaPaquetes/DiagramaPaquetes.png?raw=true">
 
 ## Licencia
 
