@@ -64,6 +64,9 @@ Diagrama de secuencia del flujo normal del juego (una vez el juego fue inicializ
 
 <img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20jugadores%20contestan%20preguntas%20y%20se%20elige%20a%20un%20ganador%20Sequence.png?raw=true">
 
+Diagrama de Estados para el funcionamiento básico del juego:
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/diagrama-estado-juego/docs/DiagramaEstado-Juego/DiagramaEstado-Juego.png?raw=true">
+
 Diagrama de Secuencia para jugador contestando una pregunta usando un Augmenter:
 
 <img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png?raw=true">
