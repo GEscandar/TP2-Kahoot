@@ -50,11 +50,11 @@ Se deberá ejecutar el siguiente comando dentro del directorio del proyecto:
 
 Diagrama de clases principal del proyecto:
 
-<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasClase/DiagramaUML-Clases-TP2.png?raw=true">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/actualizaci%C3%B3n-diagramas-entrega-final/docs/out/DiagramasClase/DiagramaUML-Clases-TP2.png?raw=true">
 
 Para la clase abstracta ScoreAugmenter, se creó un diagrama de clases en detalle:
 
-<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasClase/DiagramaUML-DetalleAugmentation-TP2.png?raw=true">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/actualizaci%C3%B3n-diagramas-entrega-final/docs/out/DiagramasClase/DiagramaUML-DetalleAugmentation-TP2.png?raw=true">
 
 Lo mismo para el detalle de la clase abstracta Question:
 
@@ -69,7 +69,7 @@ Diagrama de Estados para el funcionamiento básico del juego:
 
 Diagrama de Secuencia para jugador contestando una pregunta usando un Augmenter:
 
-<img src="https://github.com/GEscandar/TP2-Kahoot/blob/master/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png?raw=true">
+<img src="https://github.com/GEscandar/TP2-Kahoot/blob/actualizaci%C3%B3n-diagramas-entrega-final/docs/out/DiagramasSecuencia/Diagrama%20Secuencia%20TP2%20-%20Jugador%20contesta%20una%20pregunta%20con%20augmenter.png?raw=true">
 
 Diagrama de Secuencia para calculo de puntaje para dos jugadores cuando uno usa exclusividad y el otro no: 
 

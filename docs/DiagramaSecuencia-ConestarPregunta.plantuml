@@ -21,9 +21,9 @@ game-> game:2.nextTurn\n(selectedOptions, augmenter)
 activate game
 game->>question:2.1.calculatePoints\n(selectedOptions, augmenter)
 activate question
-question ->> augmenter:isForPenalty()
+question ->> augmenter:applies(hasPenalty())
 activate augmenter
-augmenter -->> question:false
+augmenter -->> question:this
 deactivate augmenter
 question ->> score:new Score(augmenter)
 activate score
