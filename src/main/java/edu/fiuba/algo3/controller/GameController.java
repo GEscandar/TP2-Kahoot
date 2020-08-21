@@ -165,15 +165,6 @@ public class GameController {
 		timeCounter.setText(String.valueOf(TIME_INTERVAL));
 	}
 	
-	public Player getCurrentOpponent() {
-		for(Player player : game.getPlayers()) {
-			if(!player.equals(game.getCurrentPlayer())) {
-				return player;
-			}
-		}
-		return game.getCurrentPlayer();
-	}
-	
 	private void startTimeThread() {
 		interval = TIME_INTERVAL;
 		timer = new Timer();
