@@ -40,10 +40,7 @@ public abstract class Question {
 	}
 	
 	public Score calculatePoints(List<GameOption> selectedOptions, ScoreAugmenter augmenter) {
-		if(augmenter.isForPenalty() != hasPenalty()) {
-			augmenter = new NoMultiplier(); 
-		}
-		return new Score(calculatePoints(selectedOptions), augmenter);
+		return new Score(calculatePoints(selectedOptions), augmenter.applies(hasPenalty()));
 	}
 	
 	
