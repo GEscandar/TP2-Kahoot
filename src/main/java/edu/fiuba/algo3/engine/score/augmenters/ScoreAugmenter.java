@@ -21,4 +21,11 @@ public abstract class ScoreAugmenter {
 
 		return other.getType().equals(this.getType());
 	}
+	
+	public ScoreAugmenter applies(boolean hasPenalty) {
+		if(hasPenalty == isForPenalty()) {
+			return this;
+		}
+		return new NoMultiplier();
+	}
 }

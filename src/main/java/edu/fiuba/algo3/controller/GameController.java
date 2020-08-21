@@ -48,8 +48,10 @@ public class GameController {
 	private String augmenterString;
 	private GenericQuestionController currentQuestionController;
 	private ScoreAugmenterPaneController scoreAugmenterController;
-	private int interval = 30;
+	private int TIME_INTERVAL = 60;
+	private int interval = TIME_INTERVAL;
 	private Timer timer;
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
@@ -134,6 +136,7 @@ public class GameController {
 		game.nextTurn(currentQuestionController.getSelectedAnswers(), augmenterType.getScoreAugmenter());
 		updatePanes();
 		submitButton.setDisable(true);
+		augmenterString = null;
 		if (game.isOver()) {
 			endGame();
 		}else {
@@ -159,12 +162,21 @@ public class GameController {
 	
 	private void resetTimer() {
 		timer.cancel();
-		timeCounter.setText("30");
+		timeCounter.setText(String.valueOf(TIME_INTERVAL));
 	}
 	
+	public Player getCurrentOpponent() {
+		for(Player player : game.getPlayers()) {
+			if(!player.equals(game.getCurrentPlayer())) {
+				return player;
+			}
+		}
+		return game.getCurrentPlayer();
+	}
 	
 	private void startTimeThread() {
-		interval = 30;timer = new Timer();
+		interval = TIME_INTERVAL;
+		timer = new Timer();
 		
 	    timer.scheduleAtFixedRate(new TimerTask() {
 	        public void run() {
