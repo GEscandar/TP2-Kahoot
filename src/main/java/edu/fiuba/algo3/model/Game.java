@@ -12,6 +12,7 @@ public class Game {
 	private List<Player> players;
 	private List<Question> questions;
 	private Player currentPlayer;
+	private Player currentOponent;
 	private Question currentQuestion;
 	private Iterator<Player> playersIterator;
 	private Iterator<Question> questionIterator;

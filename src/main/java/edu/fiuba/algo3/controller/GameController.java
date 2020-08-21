@@ -115,6 +115,15 @@ public class GameController {
 		return this.game.getCurrentPlayer();
 	}
 
+	public Player getCurrentOpponent() {
+		for(Player player : game.getPlayers()) {
+			if(!player.equals(game.getCurrentPlayer())) {
+				return player;
+			}
+		}
+		return game.getCurrentPlayer();
+	}
+
 	public Question getCurrentQuestion() {
 		return this.game.getCurrentQuestion();
 	}
